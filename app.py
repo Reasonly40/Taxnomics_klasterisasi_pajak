@@ -156,11 +156,6 @@ def logout():
 # -------------------------
 # Clustering routes
 # -------------------------
-@app.route("/")
-def index():
-    if not current_user.is_authenticated:
-        return redirect(url_for("login"))
-    return redirect(url_for("home"))
 
 @app.route("/clustering", methods=["GET", "POST"])
 @login_required
