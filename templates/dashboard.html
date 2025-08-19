@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard - TaxNomics{% endblock %}
+
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold text-blue-600 mb-4">Dashboard Hasil Prediksi</h2>
+
+    {% if data %}
+    <div class="overflow-x-auto">
+        <table class="w-full border border-gray-300 rounded-lg">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border">User</th>
+                    <th class="px-4 py-2 border">Nilai Pajak</th>
+                    <th class="px-4 py-2 border">Jenis Penerimaan Pajak</th>
+                    <th class="px-4 py-2 border">Kota/Kab</th>
+                    <th class="px-4 py-2 border">Hasil Prediksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in data %}
+                <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-2 border">{{ d.user_id }}</td>
+                    <td class="px-4 py-2 border">{{ d.nilai_pajak }}</td>
+                    <td class="px-4 py-2 border">{{ d.jenis_penerimaan }}</td>
+                    <td class="px-4 py-2 border">{{ d.kota }}</td>
+                    <td class="px-4 py-2 border">{{ d.result }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-gray-600">Tidak ada data prediksi.</p>
+    {% endif %}
+
+    <div class="mt-6 space-x-4">
+        <a href="{{ url_for('export') }}" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Download CSV</a>
+        <a href="{{ url_for('predict') }}" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Kembali ke Halaman Prediksi</a>
+        <!-- Logout sudah ada di sidebar, tapi tetap bisa ditaruh jika ingin di sini -->
+        <a href="{{ url_for('logout') }}" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700">Logout</a>
+    </div>
+</div>
+{% endblock %}

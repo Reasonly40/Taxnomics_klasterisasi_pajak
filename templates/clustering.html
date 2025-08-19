@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}Form Clustering - TaxNomics{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-50 py-10">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+        <h2 class="text-2xl font-bold text-blue-600 mb-6">Form Input Data</h2>
+        <form method="POST" class="space-y-6" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div>
+                {{ form.feature1.label(class="block font-semibold text-gray-700 mb-2") }}
+                {{ form.feature1(class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500", placeholder="Masukkan Nilai Pajak") }}
+                {% if form.feature1.errors %}
+                    <p class="text-red-600 mt-1 text-sm">{{ form.feature1.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                {{ form.feature2.label(class="block font-semibold text-gray-700 mb-2") }}
+                {{ form.feature2(class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500", placeholder="Masukkan Jenis Penerimaan Pajak") }}
+                {% if form.feature2.errors %}
+                    <p class="text-red-600 mt-1 text-sm">{{ form.feature2.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                {{ form.feature3.label(class="block font-semibold text-gray-700 mb-2") }}
+                {{ form.feature3(class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500", placeholder="Masukkan Kota/Kabupaten") }}
+                {% if form.feature3.errors %}
+                    <p class="text-red-600 mt-1 text-sm">{{ form.feature3.errors[0] }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                {{ form.submit(class="bg-blue-600 text-white w-full py-3 rounded hover:bg-blue-700 transition") }}
+            </div>
+        </form>
+
+        {% if clustering %}
+        <div class="mt-6 bg-green-100 border border-green-300 text-green-700 p-4 rounded">
+            <h3 class="font-bold mb-2">Hasil Clustering:</h3>
+            <p>{{ clustering }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if history %}
+<div class="mt-8">
+  <h3 class="text-xl font-semibold mb-4 text-gray-800">📜 Riwayat Penginputan</h3>
+  <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-4">
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left border-collapse">
+        <thead class="bg-gray-100 text-gray-700">
+          <tr>
+            <th class="px-4 py-2 border"></th>
+            <th class="px-4 py-2 border">Nilai Pajak</th>
+            <th class="px-4 py-2 border">Jenis Penerimaan Pajak</th>
+            <th class="px-4 py-2 border">Kota/Kabupaten</th>
+            <th class="px-4 py-2 border">Cluster</th>
+            <th class="px-4 py-2 border">Waktu Input</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in history %}
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-2 border">{{ loop.index }}</td>
+            <td class="px-4 py-2 border">{{ row.feature1 }}</td>
+            <td class="px-4 py-2 border">{{ row.feature2 }}</td>
+            <td class="px-4 py-2 border">{{ row.feature3 }}</td>
+            <td class="px-4 py-2 border">
+              <span class="text-black-700 font-semibold">{{ row.cluster }}</span>
+            </td>
+            <td class="px-4 py-2 border text-gray-500">
+                {{ row.timestamp if row.timestamp is string else row.timestamp.strftime('%d %B %Y, %H:%M:%S') }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<script>
+    // Ambil ID unik user dari server-side Flask
+    const currentUserId = "{{ current_user.id if current_user.is_authenticated else 'guest' }}";
+    const storageKey = `riwayat_${currentUserId}`; // namespace per user
+
+    // Load riwayat hanya untuk user ini
+    function loadHistory() {
+        const history = JSON.parse(localStorage.getItem(storageKey)) || [];
+        renderHistory(history);
+    }
+    
+    // Render tabel riwayat
+    function renderHistory(history) {
+        const historyTable = document.getElementById("riwayat-body");
+        if (!historyTable) return;
+        historyTable.innerHTML = "";
+    
+        history.forEach((item, index) => {
+            const row = document.createElement("tr");
+            row.className = "hover:bg-gray-50";
+    
+            row.innerHTML = `
+                <td class="px-4 py-2 border">${index + 1}</td>
+                <td class="px-4 py-2 border">${formatRupiah(item.pajak)}</td>
+                <td class="px-4 py-2 border">${item.jenis}</td>
+                <td class="px-4 py-2 border">${item.kota}</td>
+                <td class="px-4 py-2 border">
+                    <span style="color:blue; border:1px solid blue; padding:2px 6px; border-radius:5px;">
+                        ${item.cluster}
+                    </span>
+                </td>
+                <td class="px-4 py-2 border text-gray-500">${item.timestamp}</td>
+            `;
+    
+            historyTable.appendChild(row);
+        });
+    }
+    
+    // Format angka dengan pemisah ribuan
+    function formatRupiah(angka) {
+        return angka.toLocaleString('id-ID');
+    }
+    
+    // Simpan riwayat (maksimal 10 per user)
+    function saveHistory(pajak, jenis, kota, cluster) {
+        let history = JSON.parse(localStorage.getItem(storageKey)) || [];
+    
+        history.push({
+            pajak: pajak,
+            jenis: jenis,
+            kota: kota,
+            cluster: cluster,
+            timestamp: new Date().toLocaleString('id-ID')
+        });
+    
+        // Batasi maksimal 10 entri (hapus yang paling lama)
+        if (history.length > 10) {
+            history = history.slice(history.length - 10);
+        }
+    
+        localStorage.setItem(storageKey, JSON.stringify(history));
+        renderHistory(history);
+    }
+    
+    // Event submit form
+    document.querySelector("form").addEventListener("submit", function(e) {
+        // Ambil nilai input form
+        const pajak = parseFloat(document.querySelector("[name='feature1']").value) || 0;
+        const jenis = document.querySelector("[name='feature2']").value.trim();
+        const kota = document.querySelector("[name='feature3']").value.trim();
+        const cluster = "{{ clustering if clustering else '' }}";
+    
+        if (pajak && jenis && kota && cluster) {
+            saveHistory(pajak, jenis, kota, cluster);
+        }
+    });
+    
+    // Load riwayat saat pertama kali buka
+    loadHistory();
+</script>    
+
+{% endblock %}

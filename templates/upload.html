@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Upload Data - TaxNomics{% endblock %}
+
+{% block content %}
+<div class="bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold text-blue-600 mb-4">Upload CSV — Klasterisasi Otomatis</h1>
+    <p class="text-sm text-gray-600 mb-4">
+        Unggah file CSV dengan kolom wajib:
+        <strong>Nilai Pajak</strong>, <strong>Jenis Penerimaan Pajak</strong>, <strong>Kota/Kab</strong>
+    </p>
+
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
+        <input type="file" name="file" accept=".csv" class="block border rounded px-3 py-2 w-full" required />
+        <div>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Proses Upload
+            </button>
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mt-4">
+            {% for category, msg in messages %}
+                <div class="p-3 rounded {{ 'bg-green-100 text-green-800' if category=='success' else 'bg-red-100 text-red-800' }}">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

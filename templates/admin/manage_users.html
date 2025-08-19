@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}Manajemen Akun{% endblock %}
+
+{% block content %}
+<div class="bg-white p-6 rounded shadow max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-blue-700 mb-6">🛠️ Manajemen Akun</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="mb-4 space-y-2">
+                {% for category, message in messages %}
+                    <div class="p-3 rounded text-white 
+                        {% if category == 'error' %}bg-red-600
+                        {% elif category == 'success' %}bg-green-600
+                        {% else %}bg-blue-600
+                        {% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300 rounded-lg">
+            <thead class="bg-blue-100 text-left">
+                <tr>
+                    <th class="px-4 py-2 border-b">ID</th>
+                    <th class="px-4 py-2 border-b">Username</th>
+                    <th class="px-4 py-2 border-b">Role</th>
+                    <th class="px-4 py-2 border-b">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border-b">{{ user.id }}</td>
+                    <td class="px-4 py-2 border-b capitalize">{{ user.username }}</td>
+                    <td class="px-4 py-2 border-b capitalize">{{ user.role }}</td>
+                    <td class="px-4 py-2 border-b flex gap-2">
+                        <!-- Form ubah role -->
+                        <form method="POST" action="{{ url_for('update_role', user_id=user.id) }}">
+                            <select name="role" class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none">
+                                <option value="pegawai" {% if user.role == 'pegawai' %}selected{% endif %}>Pegawai</option>
+                                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                            </select>
+                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">Update</button>
+                        </form>
+
+                        <!-- Form hapus user -->
+                        <form method="POST" action="{{ url_for('delete_user', user_id=user.id) }}" 
+                              onsubmit="return confirm('Yakin ingin menghapus user {{ user.username }}?');">
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

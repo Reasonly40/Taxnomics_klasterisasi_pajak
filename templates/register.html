@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Register - TaxNomics{% endblock %}
+
+{% block body_class %}bg-auth-background{% endblock %}
+
+{% block page_header %}
+<header>
+    <a href="/" class="absolute top-6 left-6">
+        <img src="{{ url_for('static', filename='image/logo_app.png') }}" alt="TaxNomics Logo" class="w-28 h-auto">
+    </a>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="flex justify-center">
+    <div class="bg-white/75 backdrop-blur-sm p-8 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Buat Akun Baru</h2>
+
+    <form method="POST" action="{{ url_for('register') }}" class="space-y-4">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.nama_lengkap.label(class="block font-semibold text-gray-700 mb-2") }}
+            {{ form.nama_lengkap(class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", placeholder="Nama sesuai identitas") }}
+            {% for error in form.nama_lengkap.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.username.label(class="block font-semibold text-gray-700 mb-2") }}
+            {{ form.username(class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", placeholder="min. 4 karakter, tanpa spasi") }}
+            {% for error in form.username.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.password.label(class="block font-semibold text-gray-700 mb-2") }}
+            {{ form.password(class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", placeholder="min. 8 karakter kombinasi") }}
+            <div id="password-strength" class="text-sm mt-1"></div>
+            {% for error in form.password.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.confirm_password.label(class="block font-semibold text-gray-700 mb-2") }}
+            {{ form.confirm_password(class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", placeholder="Ulangi password") }}
+            {% for error in form.confirm_password.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.submit(class="bg-blue-600 text-white w-full py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 cursor-pointer") }}
+        </div>
+    </form>
+
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">Sudah punya akun?
+            <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline font-semibold">Login</a>
+        </p>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById('password'); // Lebih baik pakai ID jika ada
+    const strengthEl = document.getElementById('password-strength');
+
+    if (passwordInput) {
+        passwordInput.addEventListener('input', function() {
+            let val = this.value;
+            let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
+            let mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[A-Z])(?=.*\\d))|((?=.*[a-z])(?=.*\\d)))(?=.{6,})");
+
+            if(strongRegex.test(val)) {
+                strengthEl.textContent = "Kekuatan: Kuat";
+                strengthEl.className = "text-green-600 text-sm font-semibold";
+            } else if(mediumRegex.test(val)) {
+                strengthEl.textContent = "Kekuatan: Sedang";
+                strengthEl.className = "text-yellow-600 text-sm font-semibold";
+            } else if(val.length > 0) {
+                strengthEl.textContent = "Kekuatan: Lemah";
+                strengthEl.className = "text-red-600 text-sm font-semibold";
+            } else {
+                strengthEl.textContent = "";
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

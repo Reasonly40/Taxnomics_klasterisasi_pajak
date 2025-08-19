@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Prediksi - TaxNomics{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-6">Prediksi Pertumbuhan Ekonomi</h1>
+
+{% if mse is not none and rmse is not none and mae is not none %}
+<div class="mb-6 text-lg space-y-1">
+  <p>Mean Squared Error (MSE): <strong>{{ mse }}</strong></p>
+  <p>Root Mean Squared Error (RMSE): <strong>{{ rmse }}</strong></p>
+  <p>Mean Absolute Error (MAE): <strong>{{ mae }}</strong></p>
+</div>
+{% endif %}
+
+{% if plot_data %}
+<div class="overflow-auto max-w-full border border-gray-300 rounded shadow-lg">
+    <img src="data:image/png;base64,{{ plot_data }}" alt="SARIMA Forecast Plot" class="w-full h-auto object-contain" />
+</div>
+{% else %}
+<p class="text-gray-500 italic">Data belum tersedia.</p>
+{% endif %}
+
+{% endblock %}

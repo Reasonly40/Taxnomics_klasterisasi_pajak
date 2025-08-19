@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+{% block title %}Peta Interaktif - TaxNomics{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+#map { height: 80vh; }
+.legend {
+    background: white;
+    padding: 10px;
+    line-height: 1.4em;
+    font-size: 14px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+.legend h4 {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+.cluster-filter {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    z-index: 1000;
+    background: white;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    font-size: 14px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Peta Interaktif Cluster Pajak</h1>
+
+<div class="flex items-center space-x-3 bg-white p-3 rounded-lg shadow-md w-fit mb-4">
+  <label for="clusterSelect" class="text-gray-700 font-medium">Filter Cluster:</label>
+  <select id="clusterSelect" 
+          class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <option value="all">Semua</option>
+      <option value="0">Cluster 0</option>
+      <option value="1">Cluster 1</option>
+      <option value="2">Cluster 2</option>
+      <option value="3">Cluster 3</option>
+      <option value="4">Cluster 4</option>
+      <option value="5">Cluster 5</option>
+      <option value="6">Cluster 6</option>
+      <option value="7">Cluster 7</option>
+      <option value="8">Cluster 8</option>
+      <option value="9">Cluster 9</option>
+  </select>
+</div>
+
+<div id="map" class="rounded-lg shadow-md border border-gray-200"></div>
+
+<script>
+const filename = "{{ latest_filename }}";
+if (!filename) {
+    document.getElementById("map").innerHTML = "<p>Tidak ada data untuk ditampilkan</p>";
+} else {
+    fetch(`/api/map-data/${filename}`)
+    .then(res => res.json())
+    .then(data => {
+        const map = L.map('map').setView([1.0, 124.8], 7);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        const clusterColors = {
+            "0": "#f94144", // merah
+            "1": "#f3722c", // oranye
+            "2": "#f9c74f", // kuning
+            "3": "#90be6d", // hijau
+            "4": "#43aa8b", // toska
+            "5": "#577590", // biru tua
+            "6": "#277da1", // biru laut
+            "7": "#9d4edd", // ungu
+            "8": "#ff6d00", // jingga pekat
+            "9": "#4d908e"  // hijau kebiruan
+        };
+
+
+        let markers = [];
+
+        function renderMarkers(selectedCluster="all") {
+            // bersihkan marker lama
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+
+            fetch("{{ url_for('static', filename='geo/kabkota.geojson') }}")
+            .then(res => res.json())
+            .then(geojson => {
+                geojson.features.forEach(feature => {
+                    const name = feature.properties.NAME_2;
+                    const match = data.find(d => d["Kota/Kab"] === name);
+
+                    let popupHtml = `<strong>${name}</strong><br>`;
+                    let color = "#ccc";
+                    let radius = 8;
+                    let dominantCluster = null;
+
+                    if (match) {
+                        const clusters = match["clusters"];
+                        let maxCount = -1;
+
+                        for (const [c, count] of Object.entries(clusters)) {
+                            if (count > maxCount) {
+                                maxCount = count;
+                                dominantCluster = c;
+                            }
+                        }
+                        color = clusterColors[dominantCluster] || "#ccc";
+                        radius = Math.max(6, Math.sqrt(maxCount) * 2);
+
+                        for (const [c, count] of Object.entries(clusters)) {
+                            popupHtml += `Cluster ${c}: ${count}<br>`;
+                        }
+                    } else {
+                        popupHtml += "Tidak ada data";
+                    }
+
+                    // kalau filter aktif → hanya tampilkan cluster tertentu
+                    if (selectedCluster !== "all" && dominantCluster !== selectedCluster) {
+                        return;
+                    }
+
+                    const center = L.geoJSON(feature).getBounds().getCenter();
+
+                    const marker = L.circleMarker(center, {
+                        radius: radius,
+                        fillColor: color,
+                        color: "#555",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    }).addTo(map).bindPopup(popupHtml);
+
+                    markers.push(marker);
+                });
+            });
+        }
+
+        // pertama kali render semua cluster
+        renderMarkers("all");
+
+        // event listener untuk filter
+        document.getElementById("clusterSelect").addEventListener("change", function() {
+            renderMarkers(this.value);
+        });
+
+        // Tambahkan legend
+        fetch(`/api/cluster-summary/${filename}`)
+        .then(res => res.json())
+        .then(summary => {
+            const legend = L.control({position: 'bottomright'});
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'legend');
+                div.innerHTML = "<h4>Jumlah per Cluster</h4>";
+                for (const [cluster, count] of Object.entries(summary)) {
+                    const color = clusterColors[cluster] || "#ccc";
+                    div.innerHTML += `<div><span style="display:inline-block;width:14px;height:14px;background:${color};margin-right:6px;"></span>Cluster ${cluster}: ${count}</div>`;
+                }
+                return div;
+            };
+            legend.addTo(map);
+        });
+    });
+}
+</script>
+{% endblock %}

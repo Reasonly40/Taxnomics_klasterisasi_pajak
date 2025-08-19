@@ -1,0 +1,890 @@
+{% extends "layout.html" %}
+{% block title %}Statistik Data - TaxNomics{% endblock %}
+{% block head_extra %}
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+<style>
+    table.stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        min-width: 600px;
+    }
+    
+    table.stats-table th, table.stats-table td {
+        border: 1px solid #d1d5db; /* garis pembatas */
+        padding: 10px 15px;
+        text-align: center; /* rata tengah semua isi */
+    }
+    
+    table.stats-table th:first-child,
+    table.stats-table td:first-child {
+        text-align: left; /* kolom pertama tetap rata kiri */
+        background-color: #f3f4f6;
+        font-weight: 600;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+    
+    table.stats-table th {
+        background-color: #e0e7ff;
+        font-weight: 700;
+    }
+    
+    table.stats-table tr:nth-child(even) {
+        background-color: #f9fafb;
+    }
+</style>    
+{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 py-6">
+    <div class="max-w-7xl mx-auto px-4 space-y-10">
+
+        <!-- Judul -->
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h1 class="text-3xl font-bold text-blue-700 mb-2"> Statistik Data</h1>
+            <p class="text-gray-600">Visualisasi data dari hasil pengolahan dan clustering.</p>
+        </div>
+
+        <!-- Kontrol -->
+        <div class="bg-white p-5 rounded-lg shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-3 flex-wrap">
+                <label for="fileSelect" class="text-sm font-semibold text-gray-700">Pilih File:</label>
+                <select id="fileSelect" class="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    {% for f in files %}
+                    <option value="{{ f }}" {% if f == latest_filename %}selected{% endif %}>{{ f }}</option>
+                    {% endfor %}
+                </select>
+                <span id="fileInfo" class="muted text-sm ml-3"></span>
+
+                {% if session['role'] == 'admin' %}
+                <button 
+                    id="deleteFileBtn"
+                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 hidden">
+                    Hapus File
+                </button>
+                {% endif %}
+            </div>
+            <div class="flex gap-3">
+                <button id="downloadStatsBtn" class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded shadow transition duration-150">
+                     Download Statistik CSV
+                </button>
+                <button id="viewClusteringBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded shadow transition duration-150">
+                     Lihat Hasil Prediksi
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="text-center text-gray-500 hidden">
+            ⏳ Memuat data statistik...
+        </div>
+
+        <!-- Ringkasan Statistik -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3 max-w-5xl w-full min-h-[500px]">
+            <h2 class="text-xl font-semibold border-b pb-2"> Ringkasan Statistik Numerik</h2>
+            <div id="summary" style="min-height:300px;">Pilih file untuk menampilkan ringkasan.</div>
+        </section>
+
+        <!-- Histogram -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3">
+            <h2 class="text-xl font-semibold border-b pb-2"> Distribusi Data Numerik (Histogram)</h2>
+            <div id="numeric-histograms" style="min-height:550px;">Pilih file untuk menampilkan visualisasi.</div>
+        </section>
+
+        <!-- Boxplot -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3">
+            <h2 class="text-xl font-semibold border-b pb-2"> Boxplot Data Numerik</h2>
+            <div id="numeric-boxplots" style="min-height:550px;">Pilih file untuk menampilkan visualisasi.</div>
+        </section>
+
+        <!-- Pie Chart Kategori -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3">
+            <h2 class="text-xl font-semibold border-b pb-2"> Distribusi Kategori (Pie Chart)</h2>
+            <div id="categorical-charts" style="min-height:700px;">Pilih file untuk menampilkan visualisasi.</div>
+        </section>
+
+        <!-- Jumlah Cluster per Kota -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3">
+            <h2 class="text-xl font-semibold border-b pb-2"> Jumlah Cluster per Kota/Kabupaten</h2>
+            <div id="cluster-counts" style="min-height:600px;">Pilih file untuk menampilkan visualisasi.</div>
+        </section>
+
+        <!-- Barplot -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3">
+            <h2 class="text-xl font-semibold flex items-center gap-2">
+                 <span>Barplot Jumlah Data Cluster di setiap Kota/Kabupaten</span>
+            </h2>
+            <div id="barplot-cluster-kota" style="min-height:650px;"></div>
+        </section>
+
+        <!-- Pie Komposisi Cluster -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3">
+            <h2 class="text-xl font-semibold flex items-center gap-2">
+                 <span>Komposisi Jumlah Data Berdasarkan Cluster</span>
+            </h2>
+            <div class="flex justify-center items-center">
+                <div id="pie-cluster-composition" style="height:750px; width:750px;"></div>
+            </div>
+        </section>        
+
+        <!-- PCA Scatter -->
+        <section class="bg-white p-6 rounded-lg shadow space-y-3 hidden">
+            <h2 class="text-xl font-semibold border-b pb-2"> Visualisasi 2D (PCA)</h2>
+            <div id="tsne-scatter" style="min-height:550px;">Pilih file untuk menampilkan visualisasi.</div>
+        </section>
+
+    </div>
+</div>
+
+<script>
+(function() {
+    const fileSelect = document.getElementById("fileSelect");
+    const fileInfo = document.getElementById("fileInfo"); 
+    const summaryDiv = document.getElementById("summary");
+    const histDiv = document.getElementById("numeric-histograms");
+    const boxDiv = document.getElementById("numeric-boxplots");
+    const catDiv = document.getElementById("categorical-charts");
+    const loadingIndicator = document.getElementById("loadingIndicator");
+    const downloadBtn = document.getElementById("downloadStatsBtn");
+    const viewClusteringBtn = document.getElementById("viewClusteringBtn");
+    const clusterCountsDiv = document.getElementById("cluster-counts");
+    const barplotDiv = document.getElementById("barplot-cluster-kota");
+    const scatterDiv = document.getElementById("tsne-scatter");
+    const pieCompDiv = document.getElementById("pie-cluster-composition");
+
+    // Helper format
+    function formatNumber(num) {
+        if (num === null || num === undefined || Number.isNaN(Number(num))) return "";
+        return Number(num).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    function safeId(name) {
+        return name.replace(/\s+/g, "_").replace(/[^\w\-]/g, "");
+    }
+
+    function deleteFile(filename) {
+        if (!confirm(`Yakin ingin menghapus ${filename}?`)) return;
+
+        fetch(`/delete-file/${filename}`, {
+            method: "POST"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                location.reload(); // refresh halaman
+            } else {
+                alert("Gagal menghapus: " + (data.error || "Unknown error"));
+            }
+        });
+    }
+
+    // Renderers
+    function renderSummaryTable(describeData) {
+        if (!describeData || describeData.length === 0) {
+            return "<p class='text-gray-600'>Data statistik numerik tidak tersedia.</p>";
+        }
+        // keys except index
+        const keys = Object.keys(describeData[0]).filter(k => k !== "index");
+        let html = "<div style='overflow-x:auto;'><table class='stats-table'><thead><tr><th>Statistik</th>";
+        keys.forEach(k => html += `<th>Nilai</th>`);
+        html += "</tr></thead><tbody>";
+        describeData.forEach(row => {
+            html += "<tr>";
+            html += `<td>${row.index}</td>`;
+            keys.forEach(k => {
+                let val = row[k];
+                if (typeof val === "number") val = formatNumber(val);
+                html += `<td class='text-right'>${val === null || val === undefined ? "" : val}</td>`;
+            });
+            html += "</tr>";
+        });
+        html += "</tbody></table></div>";
+        return html;
+    }
+
+    function renderNumericHistograms(numericData) {
+        histDiv.innerHTML = "";
+        if (!numericData || Object.keys(numericData).length === 0) {
+            histDiv.innerHTML = "<p class='muted'>Tidak ada kolom numerik untuk histogram.</p>";
+            return;
+        }
+        for (const [col, values] of Object.entries(numericData)) {
+            if (!Array.isArray(values) || values.length === 0) continue;
+            const id = "hist_" + safeId(col);
+            const container = document.createElement("div");
+            container.innerHTML = `<h3 class="font-semibold mb-2 text-gray-800">${col}</h3><div id="${id}" style="min-height:240px;"></div>`;
+            histDiv.appendChild(container);
+            
+            const tickValues = [0, 20000000000, 40000000000, 60000000000, 80000000000, 100000000000];
+            const tickLabels = ['0', '20', '40', '60', '80', '100'];
+
+
+            Plotly.newPlot(id, [{
+                // PENTING: Gunakan array 'values' yang asli, tanpa konversi
+                x: values, 
+                type: 'histogram',
+                marker: {color: '#4A90E2'},
+                opacity: 0.75,
+                nbinsx: 20
+            }], {
+                title: {
+                    text: `Distribusi ${col}`,
+                    font: {size: 16},
+                    xref: 'paper',
+                    x: 0.5
+                },
+                margin: {t:50, b:50, l:50, r:20},
+                xaxis: {
+                    title: `${col} (dalam Miliar)`,
+                    showgrid: true,
+                    gridcolor: '#e0e0e0',
+                    zeroline: false,
+                    
+                    // --- INI BAGIAN UTAMA PERUBAHAN ---
+                    // Memberitahu Plotly untuk menggunakan label kustom kita
+                    tickvals: tickValues,
+                    ticktext: tickLabels
+                    // Properti tickformat dan ticksuffix tidak diperlukan lagi
+                },
+                yaxis: {
+                    title: 'Frekuensi',
+                    showgrid: true,
+                    gridcolor: '#e0e0e0',
+                    zeroline: false
+                },
+                height: 350,
+                bargap: 0.2,
+                plot_bgcolor: '#f9f9f9',
+                paper_bgcolor: '#ffffff'
+            }, {responsive: true});
+        }
+    }
+
+    function renderNumericBoxplots(numericData) {
+        boxDiv.innerHTML = "";
+        if (!numericData || Object.keys(numericData).length === 0) {
+            boxDiv.innerHTML = "<p class='muted'>Tidak ada kolom numerik untuk boxplot.</p>";
+            return;
+        }
+        for (const [col, values] of Object.entries(numericData)) {
+            if (!Array.isArray(values) || values.length === 0) continue;
+            const id = "box_" + safeId(col);
+            const container = document.createElement("div");
+            container.innerHTML = `<h3 class="font-semibold mb-2 text-gray-800">${col}</h3><div id="${id}" style="min-height:200px;"></div>`;
+            boxDiv.appendChild(container);
+
+            const tickValues_box = [0, 20000000000, 40000000000, 60000000000, 80000000000, 100000000000];
+            const tickLabels_box = ['0', '20', '40', '60', '80', '100'];
+
+            Plotly.newPlot(id, [{
+            y: values,
+            type: 'box',
+            name: col,  // masih boleh ada untuk legend, tapi tidak akan tampil di bawah box
+            boxmean: true,
+            boxpoints: 'outliers',
+            jitter: 0.4,
+            pointpos: -1.8,
+            marker: {
+                color: '#4A90E2',
+                size: 7,
+                symbol: 'diamond',
+                outliercolor: 'rgba(219, 64, 82, 0.7)',
+            },
+            line: {
+                width: 1
+            }
+        }], {
+            title: {
+                text: `Distribusi Data ${col}`,
+                font: { size: 18, color: '#333' },
+                x: 0.5
+            },
+            xaxis: {
+                showticklabels: false,  // ini yang akan menghapus tulisan di bawah boxplot
+                showgrid: true,
+                zeroline: false
+            },
+            yaxis: {
+                title: `${col} (dalam Miliar)`,
+                zeroline: false,
+                gridcolor: '#e9e9e9',
+                tickvals: tickValues_box,
+                ticktext: tickLabels_box
+            },
+            plot_bgcolor: '#f9f9f9',
+            paper_bgcolor: '#ffffff',
+            margin: { t: 50, b: 40, l: 90, r: 40 },
+            height: 450,
+            font: {
+                family: 'Arial, sans-serif',
+                size: 12,
+                color: '#666'
+            }
+        }, { responsive: true });
+        }
+    }
+
+    function renderCategoricalCharts(categoricalData) {
+        catDiv.innerHTML = "";
+        if (!categoricalData || Object.keys(categoricalData).length === 0) {
+            catDiv.innerHTML = "<p class='muted'>Tidak ada kolom kategorikal.</p>";
+            return;
+        }
+        for (const [col, counts] of Object.entries(categoricalData)) {
+            if (!Array.isArray(counts) || counts.length === 0) continue;
+            const id = "pie_" + safeId(col);
+            const container = document.createElement("div");
+            container.innerHTML = `<h3 class="font-semibold mb-2 text-gray-800">${col}</h3><div id="${id}" style="min-height:260px;"></div>`;
+            catDiv.appendChild(container);
+            // Asumsikan variabel 'id' dan 'counts' sudah tersedia dari kode Anda.
+            // counts adalah array seperti: [{label: 'A', count: 10}, {label: 'B', count: 20}, ...]
+
+            Plotly.newPlot(id, [{
+                labels: counts.map(c => c.label),
+                values: counts.map(c => c.count),
+                type: 'pie',
+                
+                // --- Bagian Mempercantik Visual ---
+                hole: 0.4, // Buat jadi Donut Chart agar lebih modern
+                pull: 0.03, // Sedikit menarik setiap slice untuk memberi efek terpisah
+                marker: {
+                    // Palet warna kustom yang profesional dan menarik
+                    colors: ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#606c38', '#023e8a'],
+                    line: {
+                        color: '#ffffff', // Warna garis pemisah
+                        width: 3         // Tebal garis pemisah
+                    }
+                },
+                
+                // --- Bagian Memperjelas Informasi ---
+                textinfo: 'percent', // Tampilkan persentase di dalam slice
+                insidetextorientation: 'radial', // Orientasi teks di dalam
+                textposition: 'inside',
+                
+                // Informasi saat hover dibuat lebih jelas dan dalam Bahasa Indonesia
+                hovertemplate: '<b>%{label}</b><br>' +
+                            'Jumlah: %{value:,}<br>' +
+                            'Persentase: %{percent}' +
+                            '<extra></extra>', // <extra></extra> untuk menyembunyikan info tambahan
+
+            }], {
+                // --- Pengaturan Layout dan Ukuran ---
+                title: {
+                    text: 'Distribusi Kategori', // Judul utama untuk memperjelas konteks
+                    font: {
+                        size: 20,
+                        color: '#333'
+                    },
+                    x: 0.5 // Posisi judul di tengah
+                },
+                height: 550, // Perbesar ukuran chart secara signifikan
+                margin: { t: 80, b: 20, l: 20, r: 20 }, // Beri ruang untuk judul dan chart
+                showlegend: true,
+                legend: {
+                    x: 1,
+                    xanchor: 'left',
+                    y: 0.5,
+                    font: {
+                        size: 12
+                    }
+                },
+                paper_bgcolor: '#ffffff',
+                plot_bgcolor: '#ffffff',
+                font: {
+                    family: 'Arial, sans-serif',
+                    color: '#444'
+                }
+            }, {
+                responsive: true
+            });
+        }
+    }
+
+    /**
+     * Merender scatter plot dari data clustering (misalnya hasil t-SNE).
+     * @param {object[]} scatterData - Array data, setiap objek harus memiliki properti x, y, dan cluster.
+     * @param {string} keyX - Nama properti untuk sumbu X (misalnya 'tsne-x').
+     * @param {string} keyY - Nama properti untuk sumbu Y (misalnya 'tsne-y').
+     * @param {string} keyCluster - Nama properti untuk cluster (misalnya 'Cluster').
+     */
+    function renderScatter(scatterData, keyX, keyY, keyCluster) {
+        // Pastikan div dengan id 'scatterDiv' ada di HTML Anda
+        const scatterDiv = document.getElementById('tsne-scatter');
+        scatterDiv.innerHTML = ""; // Bersihkan kontainer
+
+        if (!scatterData || scatterData.length === 0) {
+            scatterDiv.innerHTML = "<p class='muted'>Tidak ada data untuk scatter plot.</p>";
+            return;
+        }
+
+        // --- Ekstrak Cluster Unik ---
+        const clusters = [...new Set(scatterData.map(item => item[keyCluster]))].sort((a, b) => a - b);
+        const paletWarna = ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#606c38', '#023e8a', '#0077b6', '#00b4d8', '#48cae4'];
+
+        // --- Buat satu trace untuk setiap cluster ---
+        const traces = clusters.map((cluster, index) => {
+            const dataPerCluster = scatterData.filter(item => item[keyCluster] === cluster);
+            
+            return {
+                x: dataPerCluster.map(item => item[keyX]),
+                y: dataPerCluster.map(item => item[keyY]),
+                mode: 'markers',
+                type: 'scatter',
+                name: `Cluster ${cluster}`,
+                marker: {
+                    size: 8,
+                    color: paletWarna[index % paletWarna.length],
+                    opacity: 0.8,
+                    line: {
+                        width: 1,
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    }
+                },
+                hovertemplate:
+                    `<b>${keyX}:</b> %{x}<br>` +
+                    `<b>${keyY}:</b> %{y}<br>` +
+                    `<b>Cluster:</b> ${cluster}` +
+                    `<extra></extra>`
+            };
+        });
+
+        // --- Konfigurasi Layout ---
+        const layout = {
+            title: `Visualisasi Sebaran Data (Clustering)`,
+            xaxis: {
+                title: keyX,
+                gridcolor: '#e9e9e9'
+            },
+            yaxis: {
+                title: keyY,
+                gridcolor: '#e9e9e9'
+            },
+            legend: {
+                title: { text: 'Clusters' }
+            },
+            height: 550,
+            plot_bgcolor: '#f9f9f9',
+            paper_bgcolor: '#ffffff',
+            margin: { l: 60, r: 40, b: 60, t: 80 },
+            hovermode: 'closest'
+        };
+
+        // --- Render Plot ---
+        Plotly.newPlot(scatterDiv, traces, layout, { responsive: true });
+    } 
+
+    function renderClusterCounts(clusterData) {
+        clusterCountsDiv.innerHTML = "";
+
+        if (!clusterData) {
+            clusterCountsDiv.innerHTML = "<p class='muted'>Tidak ada data cluster.</p>";
+            return;
+        }
+
+        // Tambahkan CSS grid untuk 3 kolom
+        if (!document.getElementById('cluster-grid-styles')) {
+            const style = document.createElement('style');
+            style.id = 'cluster-grid-styles';
+            style.innerHTML = `
+                .cluster-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 20px;
+                }
+                .cluster-card {
+                    border: 1px solid #e0e0e0;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                    padding: 16px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .cluster-card h3 {
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                    color: #374151;
+                }
+                .cluster-card table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .cluster-card th, .cluster-card td {
+                    border: 1px solid #d1d5db;
+                    padding: 6px 10px;
+                    font-size: 14px;
+                    text-align: center;
+                }
+                .cluster-card th:first-child, .cluster-card td:first-child {
+                    text-align: left;
+                    background-color: #f3f4f6;
+                    font-weight: 600;
+                }
+                .cluster-card tr:nth-child(even) {
+                    background-color: #f9fafb;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Normalisasi data
+        let normalized = {};
+        if (Array.isArray(clusterData)) {
+            clusterData.forEach(r => {
+                const kota = r.Kota || r['Kota/Kab'] || r.KotaKab || "(unknown)";
+                const cl = r.Cluster || r.cluster || "(unknown)";
+                const cnt = r.count || 0;
+                normalized[kota] = normalized[kota] || [];
+                normalized[kota].push({ cluster: String(cl), count: Number(cnt) });
+            });
+        } else {
+            normalized = clusterData;
+        }
+
+        // Buat grid container
+        const gridContainer = document.createElement("div");
+        gridContainer.className = "cluster-grid";
+
+        for (const [kota, arr] of Object.entries(normalized)) {
+            const kotaDiv = document.createElement("div");
+            kotaDiv.className = "cluster-card";
+
+            kotaDiv.innerHTML = `<h3>${kota}</h3>`;
+            let table = `<table><thead><tr><th>Cluster</th><th>Jumlah</th></tr></thead><tbody>`;
+            arr.forEach(item => {
+                table += `<tr>
+                            <td>${item.cluster}</td>
+                            <td style="text-align:right;">${item.count.toLocaleString()}</td>
+                        </tr>`;
+            });
+            table += "</tbody></table>";
+            kotaDiv.innerHTML += table;
+
+            gridContainer.appendChild(kotaDiv);
+        }
+
+        clusterCountsDiv.appendChild(gridContainer);
+    }
+
+    function renderBarplotClusterKota(clusterData) {
+        const barplotDiv = document.getElementById('barplot-cluster-kota');
+        barplotDiv.innerHTML = "";
+
+        if (!clusterData || Object.keys(clusterData).length === 0) {
+            barplotDiv.innerHTML = "<p class='muted'>Tidak ada data untuk barplot cluster per kota.</p>";
+            return;
+        }
+
+        // CSS untuk baris penuh
+        if (!document.getElementById('barplot-fullwidth-styles')) {
+            const style = document.createElement('style');
+            style.id = 'barplot-fullwidth-styles';
+            style.innerHTML = `
+                .barplot-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    padding: 10px 0;
+                }
+                .chart-wrapper {
+                    border: 1px solid #e0e0e0;
+                    border-radius: 8px;
+                    padding: 12px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                    background-color: #ffffff;
+                    width: 100%;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        barplotDiv.className = 'barplot-container';
+
+        // Normalisasi data
+        let normalized = {};
+        if (Array.isArray(clusterData)) {
+            clusterData.forEach(r => {
+                const kota = r.Kota || r['Kota/Kab'] || r.KotaKab || "(unknown)";
+                const cl = r.Cluster || r.cluster || "(unknown)";
+                const cnt = r.count || 0;
+                normalized[kota] = normalized[kota] || [];
+                normalized[kota].push({ cluster: String(cl), count: Number(cnt) });
+            });
+        } else {
+            normalized = clusterData;
+        }
+
+        const clustersSet = new Set();
+        const paletWarna = ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#606c38', '#023e8a', '#0077b6', '#00b4d8', '#48cae4'];
+        for (const kota in normalized) {
+            normalized[kota].forEach(x => clustersSet.add(x.cluster));
+        }
+        const clusters = Array.from(clustersSet).sort((a, b) => a - b);
+        const kotaList = Object.keys(normalized).sort();
+
+        // Buat chart per cluster
+        clusters.forEach((cluster, index) => {
+            const wrapperDiv = document.createElement('div');
+            wrapperDiv.className = 'chart-wrapper';
+
+            const chartDiv = document.createElement('div');
+            wrapperDiv.appendChild(chartDiv);
+            barplotDiv.appendChild(wrapperDiv);
+
+            const counts = kotaList.map(kota => {
+                const found = normalized[kota].find(c => c.cluster === cluster);
+                return found ? found.count : 0;
+            });
+
+            const trace = {
+                x: kotaList,
+                y: counts,
+                type: 'bar',
+                marker: {
+                    color: paletWarna[index % paletWarna.length]
+                },
+                text: counts.map(v => v.toLocaleString()),
+                textposition: 'outside',
+                hovertemplate: "<b>%{x}</b><br>Jumlah: %{y:,}<extra></extra>"
+            };
+
+            const layout = {
+                title: {
+                    text: `<b>Cluster ${cluster}</b>`,
+                    font: { size: 16 }
+                },
+                yaxis: {
+                    title: 'Jumlah Data',
+                    automargin: true,
+                    gridcolor: '#e0e0e0'
+                },
+                xaxis: {
+                    automargin: true,
+                    tickangle: -30,
+                    tickfont: { size: 12 }
+                },
+                bargap: 0.3,
+                margin: { t: 50, b: 100, l: 60, r: 20 },
+                height: 400,
+                plot_bgcolor: '#fafafa',
+                paper_bgcolor: '#ffffff'
+            };
+
+            Plotly.newPlot(chartDiv, [trace], layout, { responsive: true });
+        });
+    }
+
+    function renderPieClusterComposition(clusterData) {
+        pieCompDiv.innerHTML = "";
+        if (!clusterData) {
+            pieCompDiv.innerHTML = "<p class='muted'>Tidak ada data komposisi cluster.</p>";
+            return;
+        }
+
+        // normalize and compute totals per cluster
+        let totals = {};
+        if (Array.isArray(clusterData)) {
+            clusterData.forEach(r => {
+                const cl = r.Cluster || r.cluster || "(unknown)";
+                totals[cl] = (totals[cl] || 0) + (r.count || 0);
+            });
+        } else {
+            // object: kota -> [{cluster,count},...]
+            for (const kota in clusterData) {
+                (clusterData[kota] || []).forEach(x => {
+                    totals[x.cluster] = (totals[x.cluster] || 0) + x.count;
+                });
+            }
+        }
+
+        const labels = Object.keys(totals).sort();
+        const values = labels.map(l => totals[l]);
+
+        Plotly.newPlot(pieCompDiv, [{
+            labels: labels.map(l => `Cluster ${l}`),
+            values: values,
+            type: 'pie',
+            hole: 0.35,
+            textinfo: 'label+percent',
+            textposition: 'outside',
+            automargin: true,
+            pull: 0.05,
+            marker: {
+                line: {
+                    color: '#ffffff',
+                    width: 2
+                }
+            },
+            hovertemplate: '<b>%{label}</b><br>' +
+                'Jumlah : %{value}<br>' +
+                'Persentase : %{percent}' +
+                '<extra></extra>' 
+        }], {
+            height: 600, 
+            width: 600,
+            margin: {
+                t: 50,
+                b: 50,
+                l: 50,
+                r: 50
+            },
+            showlegend: false,
+            annotations: [{
+                text: '', 
+                showarrow: false,
+                x: 0.5,
+                y: 0.5, 
+                xref: 'paper',
+                yref: 'paper'
+            }]
+        }, {
+            responsive: true
+        });
+    }
+
+    // Fetchers
+    async function loadStats(filename) {
+        if (!filename) return;
+
+        // --- BAGIAN DIAGNOSTIK ---
+        console.log("Memulai diagnostik: Memeriksa keberadaan semua elemen DOM...");
+
+        const requiredIds = [
+            'loadingIndicator', 
+            'summary', 
+            'numeric-histograms', 
+            'numeric-boxplots', 
+            'categorical-charts', 
+            'cluster-counts', 
+            'barplot-cluster-kota', 
+            'tsne-scatter', 
+            'pie-cluster-composition'
+        ];
+
+        
+        let allElementsFound = true;
+
+        requiredIds.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                console.log(`Elemen #${id} -> OK, DITEMUKAN.`);
+            } else {
+                console.error(`Elemen #${id} -> GAGAL, TIDAK DITEMUKAN (null). <--- INI PENYEBAB ERRORNYA!`);
+                allElementsFound = false;
+            }
+        });
+
+        if (!allElementsFound) {
+            alert("Error: Satu atau lebih elemen DIV tidak ditemukan di halaman HTML. Silakan periksa Console (F12) untuk melihat detail ID yang hilang.");
+            // Hentikan eksekusi lebih lanjut untuk mencegah error 'Cannot set properties of null'
+            return; 
+        }
+        console.log("Diagnostik selesai: Semua elemen DOM yang dibutuhkan telah ditemukan.");
+        // --- AKHIR BAGIAN DIAGNOSTIK ---
+
+        loadingIndicator.classList.remove("hidden");
+        summaryDiv.innerHTML = "";
+        histDiv.innerHTML = "";
+        boxDiv.innerHTML = "";
+        catDiv.innerHTML = "";
+        clusterCountsDiv.innerHTML = "";
+        barplotDiv.innerHTML = "";
+        scatterDiv.innerHTML = "";
+        pieCompDiv.innerHTML = "";
+
+        try {
+            const res = await fetch(`/api/stats/${encodeURIComponent(filename)}`);
+            const data = await res.json();
+            if (!res.ok || data.error) {
+                const err = data.error || `HTTP ${res.status}`;
+                summaryDiv.innerHTML = `<p class="text-red-600">Error: ${err}</p>`;
+                loadingIndicator.classList.add("hidden");
+                return;
+            }
+            // render summary & charts
+            summaryDiv.innerHTML = renderSummaryTable(data.describe || []);
+            renderNumericHistograms(data.numeric_values || {});
+            renderNumericBoxplots(data.numeric_values || {});
+            renderCategoricalCharts(data.categorical || {});
+        } catch (e) {
+            summaryDiv.innerHTML = `<p class="text-red-600">Error: ${e.message}</p>`;
+        } finally {
+            loadingIndicator.classList.add("hidden");
+        }
+    }
+
+    async function loadClusterViz(filename) {
+    if (!filename) return;
+    try {
+        const res = await fetch(`/api/cluster-viz/${encodeURIComponent(filename)}`);
+        const data = await res.json();
+        if (!res.ok || data.error) {
+            const err = data.error || `HTTP ${res.status}`;
+            clusterCountsDiv.innerHTML = `<p class="text-red-600">Error memuat visualisasi cluster: ${err}</p>`;
+            return;
+        }
+            // data.tsne and data.cluster_counts expected
+            renderScatter(data.tsne || [], 'tsne-x', 'tsne-y', 'Cluster');
+        // -------------------------
+
+        renderClusterCounts(data.cluster_counts || []);
+        renderBarplotClusterKota(data.cluster_counts || []);
+        renderPieClusterComposition(data.cluster_counts || []);
+    } catch (e) {
+        clusterCountsDiv.innerHTML = `<p class="text-red-600">Error: ${e.message}</p>`;
+    }
+}
+
+    // Main loader
+    async function loadAll(filename) {
+        if (!filename) return;
+        await Promise.all([loadStats(filename), loadClusterViz(filename)]);
+    }
+
+    // Event bindings
+    fileSelect.addEventListener("change", (e) => {
+        const f = e.target.value;
+        loadAll(f);
+    });
+
+    downloadBtn.addEventListener("click", () => {
+        const filename = fileSelect.value;
+        if (!filename) return;
+        window.open(`/api/stats/download/${encodeURIComponent(filename)}`, "_blank");
+    });
+
+    viewClusteringBtn.addEventListener("click", () => {
+        const filename = fileSelect.value;
+        if (!filename) return;
+        // open upload result page (shows preview)
+        window.open(`/upload/result/${encodeURIComponent(filename)}`, "_blank");
+    });
+
+    // initial load (if any file selected)
+    const initialFile = fileSelect.value;
+    if (initialFile) loadAll(initialFile);
+})();
+
+{% if session['role'] == 'admin' %}
+document.getElementById("deleteFileBtn").classList.remove("hidden");
+
+document.getElementById("deleteFileBtn").addEventListener("click", function() {
+    const filename = document.getElementById("fileSelect").value;
+    if (!confirm(`Yakin ingin menghapus file ${filename}?`)) return;
+
+    fetch(`/delete-file/${filename}`, { method: "POST" })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert("Gagal menghapus: " + (data.error || "Unknown error"));
+        }
+    });
+});
+{% endif %}
+
+</script>
+{% endblock %}

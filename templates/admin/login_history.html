@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}History Login User{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">History Login User</h1>
+
+<!-- Form filter tanggal -->
+<form method="get" class="flex items-center gap-2 mb-4">
+    <label>Start Date:</label>
+    <input type="date" name="start_date" value="{{ start_date }}" class="border rounded px-2 py-1">
+    <label>End Date:</label>
+    <input type="date" name="end_date" value="{{ end_date }}" class="border rounded px-2 py-1">
+    <button type="submit" class="bg-blue-600 text-white px-3 py-1 rounded">Filter</button>
+</form>
+
+<!-- Tabel history login -->
+<div class="overflow-x-auto">
+<table class="min-w-full border border-gray-300">
+    <thead class="bg-gray-100">
+        <tr>
+            <th class="border px-3 py-2 text-left">User</th>
+            <th class="border px-3 py-2 text-left">IP Address</th>
+            <th class="border px-3 py-2 text-left">Login Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs.items %}
+        <tr>
+            <td class="border px-3 py-2">{{ log.username }}</td>
+            <td class="border px-3 py-2">{{ log.ip_address }}</td>
+            <td class="border px-3 py-2">{{ log.login_time_str }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3" class="border px-3 py-2 text-center text-gray-500">Tidak ada data</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<!-- Pagination -->
+<div class="flex justify-center mt-4 gap-2">
+    {% if logs.has_prev %}
+    <a href="?page={{ logs.prev_num }}&start_date={{ start_date }}&end_date={{ end_date }}" class="px-3 py-1 border rounded bg-gray-200">Prev</a>
+    {% endif %}
+
+    <span class="px-3 py-1 border rounded bg-white">
+        Halaman {{ logs.page }} dari {{ logs.pages }}
+    </span>
+
+    {% if logs.has_next %}
+    <a href="?page={{ logs.next_num }}&start_date={{ start_date }}&end_date={{ end_date }}" class="px-3 py-1 border rounded bg-gray-200">Next</a>
+    {% endif %}
+</div>
+{% endblock %}

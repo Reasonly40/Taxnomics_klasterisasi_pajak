@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}TaxNomics{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        .bg-auth-background {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+                url("{{ url_for('static', filename='image/Gedung_KN.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+    
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col {% block body_class %}{% endblock %}">
+
+    {% block page_header %}{% endblock %}
+
+    <main class="flex-grow flex items-center justify-center p-4 z-10">
+        <div class="w-full max-w-5xl">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="mb-4 space-y-2">
+                        {% for category, message in messages %}
+                            <div class="p-3 rounded text-white 
+                                {% if category == 'error' %}bg-red-600
+                                {% elif category == 'success' %}bg-green-600
+                                {% else %}bg-blue-600
+                                {% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+</body>
+</html>

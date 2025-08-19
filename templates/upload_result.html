@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hasil Klasterisasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Override styles agar semua table, th, td di dalam preview pakai border */
+        .preview-table table,
+        .preview-table th,
+        .preview-table td {
+            border: 1px solid #CBD5E0; /* Tailwind gray-300 */
+        }
+        .preview-table table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .preview-table th,
+        .preview-table td {
+            padding: 0.75rem 1rem; /* padding mirip Tailwind */
+            text-align: left;
+        }
+        .preview-table th {
+            background-color: #DBEAFE; /* Tailwind blue-100 */
+        }
+        .preview-table tbody tr:hover {
+            background-color: #F3F4F6; /* Tailwind gray-100 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-extrabold text-blue-700 mb-6">Preview Hasil Klasterisasi</h1>
+
+        <div class="mb-6 flex flex-wrap items-center gap-4">
+            <a href="{{ url_for('download_file', filename=filename) }}" 
+               class="inline-block bg-green-600 text-white px-5 py-3 rounded-lg shadow-md hover:bg-green-700 transition">
+               <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5 mr-2 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+               </svg>
+               Download CSV
+            </a>
+            <a href="{{ url_for('stats_page') }}" 
+               class="text-gray-600 hover:underline font-medium text-sm">Lihat statistik</a>
+        </div>
+
+        <div class="overflow-x-auto preview-table rounded-lg shadow-sm border border-gray-300">
+            {{ preview | safe }}
+        </div>
+    </div>
+</body>
+</html>

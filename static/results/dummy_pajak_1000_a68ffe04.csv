@@ -1,0 +1,1001 @@
+Nilai Pajak,Jenis Penerimaan Pajak,Kota/Kab,Predicted_Cluster
+41807619861,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+20121578045,PPN Dalam Negeri,Kabupaten Bolaang Mongondow,0
+83407460966,PPh Pasal 22,Kabupaten Bolaang Mongondow Selatan,3
+31132563247,PPh Migas,Kota Tomohon,0
+1070739576,PPh Pasal 22,Kabupaten Bolaang Mongondow Utara,5
+84320336877,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+54177274621,PPh Migas,Kabupaten Bolaang Mongondow,1
+20781193822,PPh Pasal 25/29 OP,Kabupaten Minahasa Utara,3
+83257148504,PPh Pasal 23,Kota Tomohon,5
+13367002790,Pajak Lainnya,Kabupaten Minahasa Utara,3
+71440342801,PPN Impor,Kabupaten Bolaang Mongondow,1
+62523758355,PPh Pasal 26,Kabupaten Minahasa Utara,3
+52765540875,PPN Dalam Negeri,Kota Kotamobagu,0
+22808283617,PPh Pasal 25/29 OP,Kota Bitung,3
+47174910453,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+5680090158,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+9156851244,PPh Pasal 25/29 Badan,Kota Kotamobagu,2
+65385549167,PPh Pasal 21,Kabupaten Bolaang Mongondow Utara,5
+42338159776,PPh Migas,Kota Bitung,3
+33354973197,PPN Lainnya,Kabupaten Kepulauan Sangihe,2
+77587929972,PPh Final,Kabupaten Minahasa Utara,2
+62388305473,PPh Pasal 25/29 OP,Kabupaten Minahasa Utara,3
+57083587166,PPN Impor,Kabupaten Minahasa Selatan,3
+10809333173,PPN Impor,Kota Kotamobagu,1
+13596950629,PPh Pasal 26,Kota Tomohon,1
+23491268525,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+19918230064,PPN Lainnya,Kabupaten Bolaang Mongondow Utara,5
+18758943102,PPh Pasal 22 Impor,Kabupaten Kepulauan Talaud,3
+51833807952,PPN Impor,Kabupaten Bolaang Mongondow Selatan,3
+37445440721,PPh Pasal 23,Kabupaten Minahasa,3
+2127061781,PPh Pasal 25/29 Badan,Kabupaten Minahasa Tenggara,3
+46080862439,PPh Final,Kabupaten Kepulauan Sangihe,2
+3247866610,PPh Pasal 23,Kabupaten Minahasa Selatan,3
+41894113636,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+27024934803,PPh Pasal 21,Kota Kotamobagu,5
+76005128380,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+32639608881,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+92660662574,PBB dan BPHTB,Kabupaten Bolaang Mongondow Timur,3
+12692597968,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Utara,3
+10087695808,Pendapatan PPh DTP,Kota Kotamobagu,1
+40339811187,PPN Dalam Negeri,Kabupaten Kepulauan Talaud,0
+36215063594,PPh Pasal 22 Impor,Kabupaten Siau Tagulandang Biaro,3
+73666763950,PBB dan BPHTB,Kota Bitung,3
+74965352899,PPh Pasal 23,Kabupaten Bolaang Mongondow Utara,5
+74888691203,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Timur,9
+95866876828,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+41786910497,PPnBM Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+22571612333,Pendapatan PPh DTP,Kota Tomohon,0
+28392488268,PPh Pasal 25/29 OP,Kota Bitung,3
+42109565114,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+35123409183,PBB dan BPHTB,Kabupaten Minahasa Utara,3
+10203386627,PPh Pasal 25/29 OP,Kota Bitung,3
+8926986888,PPh Pasal 21,Kabupaten Bolaang Mongondow Timur,5
+61253491534,Pendapatan PPh DTP,Kabupaten Minahasa,3
+10993028716,PBB dan BPHTB,Kabupaten Minahasa Selatan,3
+22064548996,PBB dan BPHTB,Kota Kotamobagu,3
+23830663095,Pajak Lainnya,Kabupaten Bolaang Mongondow Utara,5
+3991312078,PPh Pasal 22,Kabupaten Bolaang Mongondow Selatan,3
+72553359074,PPh Pasal 21,Kabupaten Bolaang Mongondow Timur,5
+64599346821,PPh Pasal 23,Kabupaten Bolaang Mongondow Timur,3
+97001459760,PPh Pasal 26,Kabupaten Kepulauan Talaud,3
+35282379779,PPN Lainnya,Kota Kotamobagu,1
+93741030793,Pajak Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+95410529230,PPh Pasal 23,Kabupaten Bolaang Mongondow,5
+14112265160,PPN Impor,Kota Tomohon,0
+66855582162,Pajak Lainnya,Kabupaten Bolaang Mongondow Utara,5
+23119793122,Pajak Lainnya,Kabupaten Bolaang Mongondow Utara,5
+26743639071,PPN Impor,Kabupaten Bolaang Mongondow Utara,5
+3966486217,PPh Pasal 25/29 OP,Kabupaten Minahasa,3
+54700901849,PPN Impor,Kabupaten Minahasa Selatan,3
+22236514050,Pajak Lainnya,Kabupaten Minahasa Utara,3
+20933567262,PBB dan BPHTB,Kabupaten Kepulauan Talaud,3
+57725981566,PPh Final,Kabupaten Kepulauan Talaud,2
+98916905116,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+13630220920,PPh Pasal 22,Kabupaten Bolaang Mongondow Utara,5
+46158067393,PPh Pasal 21,Kota Tomohon,5
+6827942428,PPN Lainnya,Kota Bitung,3
+3752836752,PPh Pasal 22,Kabupaten Kepulauan Sangihe,3
+67960693945,PPh Pasal 23,Kabupaten Bolaang Mongondow Timur,3
+85461808828,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+29967311679,PPnBM Lainnya,Kota Tomohon,0
+79017628209,PPh Migas,Kabupaten Minahasa,3
+83073880909,PPh Pasal 23,Kabupaten Bolaang Mongondow,5
+94138881301,PPh Pasal 21,Kota Kotamobagu,5
+51263792656,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+84894001952,PPN Impor,Kabupaten Kepulauan Talaud,3
+75513289750,PPh Pasal 22,Kabupaten Minahasa Tenggara,3
+53171710100,PPh Migas,Kabupaten Minahasa,3
+15198082735,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Timur,0
+4839156725,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+46636905859,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Timur,9
+49065826053,PPN Lainnya,Kabupaten Siau Tagulandang Biaro,3
+86630932000,PPh Pasal 25/29 OP,Kota Bitung,3
+96248672708,PPN Dalam Negeri,Kota Kotamobagu,0
+71897158837,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+89333917765,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+26212825823,PPN Lainnya,Kabupaten Minahasa,3
+49478802141,PPh Pasal 21,Kota Tomohon,5
+76161454587,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+78167428838,PPN Lainnya,Kota Bitung,3
+10041396840,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow,1
+18972098628,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Selatan,3
+3113238132,PPN Lainnya,Kabupaten Bolaang Mongondow Timur,9
+80906352292,PPN Dalam Negeri,Kabupaten Minahasa Selatan,0
+59176890469,PPh Migas,Kabupaten Bolaang Mongondow,1
+61963894798,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+72134786396,PPh Final,Kabupaten Bolaang Mongondow Selatan,2
+11125257322,PPN Impor,Kabupaten Minahasa Tenggara,3
+88691317029,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+99089205763,PPnBM Lainnya,Kabupaten Kepulauan Sangihe,2
+36178555207,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+75628705469,PPh Pasal 22,Kota Kotamobagu,3
+24991296451,PPN Impor,Kabupaten Bolaang Mongondow,1
+50587155698,Pajak Lainnya,Kota Kotamobagu,1
+51162496678,PPh Pasal 21,Kabupaten Kepulauan Talaud,5
+97419376672,PPnBM Lainnya,Kabupaten Minahasa,3
+89961179602,PPh Migas,Kabupaten Minahasa Tenggara,3
+63814685263,PPh Final,Kota Tomohon,2
+71035108603,Pendapatan PPh DTP,Kabupaten Minahasa,3
+83486762443,PPnBM Lainnya,Kota Tomohon,0
+3502279521,PPh Pasal 23,Kota Bitung,3
+78371492751,PPh Pasal 23,Kabupaten Bolaang Mongondow Utara,5
+82240323850,PPh Final,Kabupaten Minahasa Selatan,2
+58660475091,PPh Final,Kabupaten Minahasa Tenggara,2
+94860149012,PPh Pasal 21,Kabupaten Minahasa Utara,5
+58715963894,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+15517544069,PPN Lainnya,Kabupaten Kepulauan Talaud,3
+9646955329,PBB dan BPHTB,Kota Tomohon,0
+91857739733,Pajak Lainnya,Kabupaten Siau Tagulandang Biaro,3
+16619912714,Pajak Lainnya,Kota Tomohon,1
+1248825549,PPh Migas,Kabupaten Minahasa Utara,3
+81683158854,PPh Migas,Kabupaten Bolaang Mongondow Selatan,3
+54652908372,PPh Migas,Kabupaten Kepulauan Talaud,3
+15099205000,Pajak Lainnya,Kabupaten Minahasa Tenggara,6
+12962796101,PPh Pasal 26,Kota Tomohon,1
+13635321904,PPh Final,Kabupaten Minahasa Utara,2
+75988850261,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+27376257419,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Timur,9
+80872853198,PPh Pasal 26,Kabupaten Minahasa Tenggara,3
+99714111882,PPnBM Lainnya,Kota Bitung,3
+51426563704,PBB dan BPHTB,Kabupaten Kepulauan Sangihe,2
+29389194681,PPN Lainnya,Kabupaten Minahasa Selatan,3
+22504714252,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+31151607719,PPh Pasal 23,Kota Kotamobagu,3
+18733784917,Pajak Lainnya,Kabupaten Bolaang Mongondow,1
+24579920162,PPh Pasal 21,Kabupaten Bolaang Mongondow Selatan,5
+12729026652,PPh Migas,Kota Bitung,3
+70122391781,PPh Pasal 22,Kabupaten Siau Tagulandang Biaro,3
+89507754828,PPh Pasal 21,Kota Bitung,5
+98517548615,PPN Impor,Kabupaten Bolaang Mongondow Timur,9
+91526056294,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+11310826001,PPN Impor,Kota Kotamobagu,1
+67520092333,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+7242805970,PPh Pasal 22 Impor,Kabupaten Minahasa Utara,3
+32258876432,PPN Lainnya,Kota Bitung,3
+16867805942,Pendapatan PPh DTP,Kabupaten Siau Tagulandang Biaro,3
+19758455220,PPN Dalam Negeri,Kabupaten Siau Tagulandang Biaro,0
+46044485459,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+57243048135,Pendapatan PPh DTP,Kabupaten Minahasa Selatan,3
+88176509078,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow,1
+22732443946,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+94891345043,PPnBM Lainnya,Kabupaten Minahasa Selatan,3
+55262486767,PPN Lainnya,Kabupaten Minahasa Utara,3
+53051395087,PPh Pasal 26,Kabupaten Bolaang Mongondow Selatan,3
+87090713073,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+61695409968,PPN Impor,Kabupaten Bolaang Mongondow Timur,9
+76403201056,Pajak Lainnya,Kota Kotamobagu,1
+9487478109,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Utara,5
+74719218981,PPh Pasal 21,Kabupaten Bolaang Mongondow Selatan,5
+68567701056,PBB dan BPHTB,Kabupaten Bolaang Mongondow,0
+37581807934,PPN Impor,Kabupaten Bolaang Mongondow Utara,5
+64433427349,PPh Pasal 23,Kabupaten Bolaang Mongondow Timur,3
+57027115438,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+52594046633,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+18423822813,PPN Lainnya,Kabupaten Bolaang Mongondow Timur,9
+6354434314,PPN Impor,Kota Bitung,3
+74598000329,PPh Pasal 25/29 OP,Kota Tomohon,1
+21836083355,PPnBM Lainnya,Kabupaten Kepulauan Talaud,3
+11142226326,PPnBM Lainnya,Kota Tomohon,0
+20611887067,PPN Impor,Kabupaten Bolaang Mongondow Timur,9
+12095224620,PPN Impor,Kabupaten Siau Tagulandang Biaro,3
+76279616080,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Talaud,3
+28781334472,PPh Pasal 26,Kabupaten Bolaang Mongondow Selatan,3
+81614080335,PPh Final,Kabupaten Minahasa,2
+66364095865,PPN Impor,Kabupaten Bolaang Mongondow,1
+61446641828,PPh Pasal 22,Kabupaten Minahasa Tenggara,3
+46498437619,PPN Dalam Negeri,Kabupaten Minahasa Selatan,0
+3103055322,PPN Lainnya,Kabupaten Bolaang Mongondow,1
+11791987816,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Utara,0
+52448499472,PPh Pasal 26,Kabupaten Kepulauan Talaud,3
+95536688198,PPh Pasal 22,Kabupaten Minahasa Selatan,3
+55954583354,Pajak Lainnya,Kabupaten Minahasa Utara,3
+57274125862,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+25672250422,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+92336938489,PPh Pasal 25/29 Badan,Kabupaten Minahasa Utara,3
+83098666286,PPN Impor,Kabupaten Minahasa,3
+1364827516,PPN Lainnya,Kabupaten Minahasa,3
+34882184595,PPh Migas,Kota Tomohon,0
+49862461583,PPh Pasal 22,Kabupaten Kepulauan Sangihe,3
+59009467728,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Utara,3
+82922909609,PPh Pasal 22,Kabupaten Siau Tagulandang Biaro,3
+64015925790,PPh Pasal 23,Kabupaten Minahasa Utara,3
+81931842371,PPN Dalam Negeri,Kota Bitung,0
+51603784603,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Timur,0
+64410885171,PBB dan BPHTB,Kabupaten Kepulauan Sangihe,2
+93872889378,PPN Lainnya,Kabupaten Minahasa,3
+97775725832,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Sangihe,2
+99679791742,PPh Final,Kota Tomohon,2
+13298033374,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+51230083471,PPh Migas,Kabupaten Kepulauan Talaud,3
+93285192954,PPh Pasal 22,Kota Kotamobagu,3
+59117618022,PPh Pasal 25/29 OP,Kabupaten Minahasa Tenggara,6
+83563396775,PPh Pasal 21,Kabupaten Minahasa Selatan,5
+40135956525,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+38949339226,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Selatan,3
+92520040305,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+23059689600,PPh Pasal 25/29 Badan,Kabupaten Minahasa Selatan,3
+1179671928,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+56060777557,Pendapatan PPh DTP,Kabupaten Minahasa Selatan,3
+30948349113,Pendapatan PPh DTP,Kabupaten Kepulauan Talaud,3
+79639125790,PPh Pasal 22 Impor,Kota Bitung,3
+38925712160,PPh Pasal 25/29 Badan,Kota Kotamobagu,2
+82164929849,PBB dan BPHTB,Kota Kotamobagu,3
+44712576674,PPN Lainnya,Kabupaten Minahasa Selatan,3
+99961398249,PPh Pasal 22,Kabupaten Minahasa Utara,3
+88379702658,PPnBM Lainnya,Kabupaten Minahasa,3
+12059364036,Pendapatan PPh DTP,Kabupaten Kepulauan Talaud,3
+80916207344,PBB dan BPHTB,Kabupaten Bolaang Mongondow Utara,3
+76680225480,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Timur,9
+55797501998,PPh Final,Kota Tomohon,2
+51355303210,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+19543561517,PPh Pasal 23,Kota Kotamobagu,3
+16224996642,PBB dan BPHTB,Kabupaten Bolaang Mongondow Utara,3
+22703369312,PPh Pasal 25/29 Badan,Kota Kotamobagu,2
+7834274740,PPh Final,Kota Tomohon,2
+38533279651,PPh Final,Kabupaten Kepulauan Talaud,2
+7357794310,Pajak Lainnya,Kota Tomohon,1
+34934267762,PPh Pasal 26,Kabupaten Bolaang Mongondow,1
+52113026400,PBB dan BPHTB,Kota Bitung,3
+70824290270,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+67625706651,PPh Final,Kabupaten Minahasa Selatan,2
+47336818548,PPnBM Lainnya,Kota Kotamobagu,1
+19841514608,Pajak Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+51458026819,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+31719309984,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+60897319836,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow,1
+64835844674,PPh Pasal 21,Kabupaten Minahasa Utara,5
+62271182202,PBB dan BPHTB,Kota Bitung,3
+76676346805,PPN Impor,Kabupaten Bolaang Mongondow,1
+85727005630,PPh Pasal 25/29 Badan,Kota Tomohon,0
+46843643058,PPh Pasal 21,Kabupaten Minahasa,5
+40285921538,PPh Migas,Kota Kotamobagu,1
+34455021067,PPh Final,Kabupaten Siau Tagulandang Biaro,2
+12884664378,PPh Final,Kabupaten Kepulauan Sangihe,2
+23468118453,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+67199905987,PPh Pasal 22,Kabupaten Bolaang Mongondow Selatan,3
+29237727894,Pajak Lainnya,Kabupaten Minahasa Tenggara,6
+10407060422,PPh Pasal 26,Kabupaten Minahasa Tenggara,3
+58985668597,PPh Pasal 22 Impor,Kota Kotamobagu,1
+49195679116,PPh Pasal 23,Kabupaten Minahasa Selatan,3
+36703266684,PPh Pasal 23,Kabupaten Minahasa,3
+72669697167,PPh Pasal 22 Impor,Kabupaten Minahasa Utara,3
+54622087830,PPh Final,Kabupaten Kepulauan Sangihe,2
+48244894795,Pendapatan PPh DTP,Kota Bitung,3
+70759095560,PPh Final,Kabupaten Kepulauan Sangihe,2
+8741467209,PPh Migas,Kabupaten Minahasa Selatan,3
+26409232014,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Timur,3
+75440673825,PPh Pasal 23,Kabupaten Siau Tagulandang Biaro,3
+88362257883,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+88451635615,Pajak Lainnya,Kabupaten Minahasa Selatan,3
+29176935331,PPN Lainnya,Kota Bitung,3
+1518142326,PPN Lainnya,Kabupaten Minahasa Selatan,3
+15727517031,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+15149969135,Pajak Lainnya,Kabupaten Minahasa Tenggara,6
+4467153868,PPh Pasal 21,Kota Kotamobagu,5
+31406083393,PPh Migas,Kabupaten Minahasa Utara,3
+78289641376,PPh Pasal 21,Kabupaten Bolaang Mongondow Selatan,5
+16809221142,PPN Lainnya,Kota Kotamobagu,1
+56120471078,PPh Pasal 23,Kabupaten Minahasa,3
+19907720770,PPh Pasal 25/29 OP,Kabupaten Siau Tagulandang Biaro,3
+55036874710,PPh Final,Kabupaten Kepulauan Talaud,2
+37403929177,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow,1
+26400911441,PPh Pasal 26,Kabupaten Minahasa Tenggara,3
+47351646648,Pajak Lainnya,Kabupaten Minahasa Utara,3
+37209852835,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+6425707198,Pendapatan PPh DTP,Kabupaten Minahasa,3
+85264114231,PPh Pasal 26,Kabupaten Bolaang Mongondow Utara,5
+7085137955,PPh Pasal 25/29 OP,Kabupaten Kepulauan Talaud,3
+26924256680,PBB dan BPHTB,Kabupaten Bolaang Mongondow,0
+3564886550,PPh Pasal 23,Kota Kotamobagu,3
+83709097398,PBB dan BPHTB,Kabupaten Kepulauan Sangihe,2
+30369730478,PPh Pasal 22,Kabupaten Kepulauan Talaud,3
+76890485197,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+11270927448,PPh Pasal 26,Kabupaten Bolaang Mongondow,1
+19262636216,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Timur,9
+87801718739,PPh Pasal 25/29 Badan,Kota Bitung,3
+44240424204,PPh Pasal 25/29 Badan,Kabupaten Minahasa,3
+64538987481,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+5920946925,PBB dan BPHTB,Kabupaten Kepulauan Talaud,3
+85638228088,PPh Pasal 26,Kota Tomohon,1
+58554977399,PPnBM Lainnya,Kabupaten Kepulauan Sangihe,2
+78413775509,PPh Pasal 26,Kabupaten Minahasa Utara,3
+43494582847,PPh Final,Kabupaten Bolaang Mongondow Timur,2
+60683865256,PPnBM Lainnya,Kota Kotamobagu,1
+75824213234,PPN Impor,Kota Tomohon,0
+4497952764,PPh Final,Kabupaten Bolaang Mongondow Timur,2
+65730240446,PPN Dalam Negeri,Kota Tomohon,0
+4605607968,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+2336857980,PPN Lainnya,Kabupaten Bolaang Mongondow,1
+91023079004,PPN Dalam Negeri,Kabupaten Bolaang Mongondow,0
+77062994350,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+17815238358,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+66804525996,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow,1
+93924658395,PPh Final,Kabupaten Minahasa Selatan,2
+97509074613,PPh Pasal 23,Kabupaten Minahasa Selatan,3
+72327097274,PPh Final,Kabupaten Bolaang Mongondow Selatan,2
+23267079672,PPh Migas,Kabupaten Minahasa Selatan,3
+50611614090,PPh Pasal 25/29 Badan,Kota Kotamobagu,2
+48985058611,PPnBM Lainnya,Kabupaten Bolaang Mongondow Utara,5
+31242890072,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Selatan,3
+89769554268,PPh Final,Kabupaten Kepulauan Sangihe,2
+41878165198,PPN Dalam Negeri,Kabupaten Kepulauan Talaud,0
+28557922316,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+93792824766,PPh Pasal 25/29 OP,Kabupaten Minahasa Selatan,3
+33150090999,PPh Pasal 25/29 OP,Kabupaten Minahasa Selatan,3
+64669719589,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+1315712158,PPh Pasal 21,Kabupaten Bolaang Mongondow Selatan,5
+28921231728,PPN Dalam Negeri,Kota Tomohon,0
+51212869101,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+82049841982,PPh Migas,Kabupaten Minahasa Selatan,3
+33500778832,PBB dan BPHTB,Kabupaten Kepulauan Sangihe,2
+51589209365,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+89341143804,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+2007787247,PPnBM Lainnya,Kabupaten Kepulauan Sangihe,2
+46622515435,PPh Pasal 25/29 OP,Kota Tomohon,1
+31725924635,PPh Pasal 26,Kota Tomohon,1
+85535280890,PPh Migas,Kabupaten Minahasa Selatan,3
+8980727620,PPh Pasal 26,Kabupaten Minahasa Tenggara,3
+72871645468,PPN Lainnya,Kabupaten Kepulauan Sangihe,2
+2544287451,PPh Migas,Kabupaten Kepulauan Sangihe,2
+52306057898,PPN Impor,Kabupaten Minahasa Selatan,3
+99332835346,PPh Pasal 22 Impor,Kabupaten Siau Tagulandang Biaro,3
+53988834952,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+92319117503,PPN Dalam Negeri,Kota Bitung,0
+13921478241,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Selatan,3
+92849210803,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+58151988288,PPh Migas,Kabupaten Kepulauan Talaud,3
+9201274137,PPh Final,Kabupaten Minahasa Selatan,2
+95698173786,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+36713585806,PPnBM Lainnya,Kabupaten Siau Tagulandang Biaro,4
+86153400013,PPN Impor,Kabupaten Minahasa Tenggara,3
+16824874084,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+16910961177,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Utara,0
+61048526077,PPh Pasal 21,Kabupaten Minahasa,5
+59564748327,PPh Pasal 25/29 OP,Kabupaten Minahasa Tenggara,6
+65131428851,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+14647696773,PPN Impor,Kota Tomohon,0
+86870081310,PBB dan BPHTB,Kabupaten Kepulauan Sangihe,2
+44630043252,PPh Final,Kabupaten Bolaang Mongondow Utara,2
+93829632370,Pajak Lainnya,Kabupaten Minahasa Utara,3
+21597403569,PPh Migas,Kabupaten Kepulauan Sangihe,2
+76327297127,PPh Pasal 25/29 OP,Kabupaten Minahasa Tenggara,6
+79632617659,PPh Pasal 22,Kabupaten Bolaang Mongondow Utara,5
+14434996336,PPN Lainnya,Kabupaten Kepulauan Sangihe,2
+37547301491,PPN Impor,Kota Bitung,3
+99488337607,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+20890594293,PPh Pasal 26,Kabupaten Minahasa,3
+96844128822,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+82091075057,PPh Pasal 22 Impor,Kabupaten Siau Tagulandang Biaro,3
+31262721877,PPN Lainnya,Kabupaten Minahasa Selatan,3
+17678538030,PPh Pasal 22,Kabupaten Kepulauan Talaud,3
+84572055911,PBB dan BPHTB,Kabupaten Bolaang Mongondow,0
+69579619830,PPh Final,Kabupaten Minahasa Selatan,2
+74279771637,PPN Dalam Negeri,Kabupaten Minahasa Utara,0
+38526399292,PPN Impor,Kabupaten Minahasa Selatan,3
+72811511591,Pajak Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+61207819531,PPN Dalam Negeri,Kabupaten Bolaang Mongondow,0
+51132422783,PPh Pasal 23,Kabupaten Bolaang Mongondow Selatan,6
+1782205068,PPh Pasal 26,Kabupaten Minahasa Tenggara,3
+32899472378,PPh Pasal 21,Kabupaten Minahasa,5
+4449715102,Pendapatan PPh DTP,Kabupaten Minahasa Selatan,3
+77986900604,PPh Final,Kabupaten Bolaang Mongondow Utara,2
+30380365679,PPh Pasal 25/29 OP,Kota Tomohon,1
+26042238529,PPh Pasal 23,Kota Tomohon,5
+71351566302,PPh Pasal 22,Kabupaten Siau Tagulandang Biaro,3
+54378943636,Pendapatan PPh DTP,Kabupaten Minahasa Utara,3
+60001233878,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+31682440973,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+93163436424,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+69320023605,PPh Pasal 26,Kota Bitung,3
+97276753479,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Timur,9
+58225396476,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Sangihe,2
+65214694713,PPN Lainnya,Kabupaten Kepulauan Talaud,3
+1348592780,PPnBM Lainnya,Kabupaten Bolaang Mongondow Utara,5
+42241949391,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+4628076410,Pajak Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+38727961052,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+62549981479,PPh Pasal 22 Impor,Kota Kotamobagu,1
+42932506662,PPh Pasal 26,Kabupaten Bolaang Mongondow,1
+87066566537,PPh Pasal 26,Kabupaten Minahasa Utara,3
+36292707581,PBB dan BPHTB,Kabupaten Bolaang Mongondow Timur,3
+42218530526,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+63111701667,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Sangihe,2
+9531618896,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+48559557743,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+11993147525,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+76542321104,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Utara,5
+38798379236,PPnBM Lainnya,Kabupaten Bolaang Mongondow Utara,5
+22469321734,PPN Lainnya,Kabupaten Minahasa Selatan,3
+84322313224,PPN Dalam Negeri,Kota Tomohon,0
+56435216283,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Timur,9
+48407378027,PBB dan BPHTB,Kabupaten Minahasa Tenggara,3
+15189905520,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Utara,3
+25904125645,PPh Pasal 26,Kabupaten Kepulauan Sangihe,1
+12054909512,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Timur,9
+67100869102,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+37284573826,PPh Pasal 26,Kabupaten Bolaang Mongondow Timur,9
+90460007376,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+5425705073,PPh Pasal 21,Kabupaten Siau Tagulandang Biaro,5
+23806784704,Pendapatan PPh DTP,Kabupaten Minahasa Utara,3
+32982014619,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+54029546241,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+52625957572,PPN Impor,Kota Bitung,3
+96962310543,PPh Final,Kabupaten Bolaang Mongondow Selatan,2
+27118262215,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+65540822774,PPh Pasal 21,Kota Bitung,5
+45582448592,PPh Pasal 21,Kabupaten Kepulauan Sangihe,5
+30187958781,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Timur,9
+94243305506,PPh Final,Kabupaten Minahasa Selatan,2
+72062187148,PBB dan BPHTB,Kabupaten Minahasa Selatan,3
+66179009951,Pendapatan PPh DTP,Kabupaten Siau Tagulandang Biaro,3
+7500994710,PPh Pasal 23,Kota Tomohon,5
+89926667420,PPh Pasal 26,Kabupaten Bolaang Mongondow Utara,5
+70479507501,PPh Pasal 26,Kabupaten Minahasa,3
+87058418714,PPh Final,Kabupaten Siau Tagulandang Biaro,2
+62393863042,PPh Migas,Kabupaten Bolaang Mongondow,1
+21684896040,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Utara,0
+54415428603,PPh Pasal 23,Kota Bitung,3
+2533864235,PPN Dalam Negeri,Kabupaten Minahasa,0
+71138510561,PPh Pasal 25/29 OP,Kabupaten Siau Tagulandang Biaro,3
+43518090096,PPh Pasal 26,Kabupaten Bolaang Mongondow,1
+64675212172,Pendapatan PPh DTP,Kota Tomohon,0
+54949672979,PPh Pasal 25/29 Badan,Kabupaten Minahasa Tenggara,3
+16511871746,PPN Impor,Kabupaten Minahasa Utara,3
+31257247203,PPnBM Lainnya,Kabupaten Minahasa Tenggara,3
+62214022688,PPh Pasal 25/29 OP,Kabupaten Siau Tagulandang Biaro,3
+42069001142,PPh Migas,Kabupaten Minahasa Utara,3
+36625562434,Pajak Lainnya,Kabupaten Kepulauan Talaud,3
+11086869597,Pendapatan PPh DTP,Kota Tomohon,0
+36105440198,PPh Pasal 23,Kabupaten Bolaang Mongondow Utara,5
+83203985412,PPN Impor,Kabupaten Bolaang Mongondow Timur,9
+79156133289,PPh Final,Kabupaten Kepulauan Sangihe,2
+74213823030,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+97144177196,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+19647534083,PPh Pasal 25/29 OP,Kota Bitung,3
+7077614449,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+69406457959,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+54167180220,PPN Impor,Kabupaten Minahasa Utara,3
+83614539390,PPh Pasal 25/29 OP,Kabupaten Minahasa Utara,3
+91667985635,Pajak Lainnya,Kabupaten Minahasa Selatan,3
+59848324638,PPh Final,Kabupaten Minahasa Utara,2
+45346813701,PPN Lainnya,Kabupaten Bolaang Mongondow Utara,5
+12176630095,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+53051667752,PPh Pasal 22 Impor,Kota Bitung,3
+52465871918,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+62616846285,PPh Pasal 22 Impor,Kota Bitung,3
+70609125682,PBB dan BPHTB,Kota Tomohon,0
+73029340695,PBB dan BPHTB,Kabupaten Minahasa,3
+6862298226,PPh Pasal 26,Kota Kotamobagu,1
+57751707332,PPh Pasal 22,Kabupaten Minahasa,3
+83556351765,PPh Migas,Kabupaten Minahasa Selatan,3
+84937457958,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+53875965026,PPh Final,Kabupaten Kepulauan Sangihe,2
+61985967826,PPh Pasal 26,Kabupaten Siau Tagulandang Biaro,3
+86729377248,Pendapatan PPh DTP,Kabupaten Siau Tagulandang Biaro,3
+28832529838,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+88072112962,PPN Lainnya,Kabupaten Minahasa,3
+43814319138,PPh Pasal 23,Kota Bitung,3
+60185777128,Pajak Lainnya,Kabupaten Bolaang Mongondow,1
+15382455283,PPnBM Lainnya,Kabupaten Minahasa Tenggara,3
+14593700814,PPh Pasal 23,Kabupaten Bolaang Mongondow Selatan,6
+36016587350,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Utara,0
+13027296505,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+30384079101,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Utara,3
+87239996644,PPN Lainnya,Kota Kotamobagu,1
+37663677043,PPh Pasal 23,Kota Kotamobagu,3
+22542195887,PPnBM Lainnya,Kabupaten Minahasa Selatan,3
+17978278544,PPh Pasal 26,Kota Kotamobagu,1
+50989478233,PPN Dalam Negeri,Kabupaten Siau Tagulandang Biaro,0
+42878132594,PPh Pasal 25/29 Badan,Kabupaten Minahasa Tenggara,3
+89397641837,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+2606807878,PBB dan BPHTB,Kota Tomohon,0
+79163648135,PPh Pasal 25/29 OP,Kabupaten Kepulauan Sangihe,1
+55554498604,PPh Pasal 26,Kabupaten Minahasa,3
+36322325452,PPh Pasal 25/29 OP,Kabupaten Kepulauan Sangihe,1
+99186947382,PPh Pasal 22 Impor,Kabupaten Minahasa Utara,3
+70296289747,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Selatan,3
+19526917156,PPh Pasal 25/29 OP,Kabupaten Minahasa,3
+64974416258,Pajak Lainnya,Kabupaten Siau Tagulandang Biaro,3
+51188213814,PPh Pasal 21,Kabupaten Bolaang Mongondow Timur,5
+34927869767,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+22851713424,PPN Impor,Kabupaten Bolaang Mongondow Timur,9
+27097252593,PPN Dalam Negeri,Kota Bitung,0
+66162278585,PPh Pasal 26,Kabupaten Bolaang Mongondow Selatan,3
+51785750453,PPh Final,Kota Kotamobagu,2
+46944628321,PPN Dalam Negeri,Kabupaten Minahasa Selatan,0
+11794453858,PPN Lainnya,Kabupaten Minahasa Selatan,3
+46115428723,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Utara,3
+9323168521,PPh Migas,Kabupaten Bolaang Mongondow,1
+68526167585,PPh Pasal 22 Impor,Kabupaten Minahasa,3
+7603570825,PPh Pasal 25/29 Badan,Kabupaten Minahasa Selatan,3
+51080593661,PBB dan BPHTB,Kabupaten Minahasa Tenggara,3
+62316182177,PBB dan BPHTB,Kabupaten Minahasa,3
+69463081456,PPN Impor,Kabupaten Kepulauan Talaud,3
+81974651332,PPN Dalam Negeri,Kabupaten Kepulauan Talaud,0
+86031846867,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Timur,0
+43926883685,Pendapatan PPh DTP,Kabupaten Minahasa Selatan,3
+6532583747,PPh Pasal 26,Kabupaten Minahasa Utara,3
+13404527276,PPh Pasal 22,Kabupaten Minahasa,3
+37416443789,Pendapatan PPh DTP,Kabupaten Minahasa Utara,3
+96460961932,PPN Dalam Negeri,Kota Kotamobagu,0
+52684618504,PPh Pasal 21,Kabupaten Minahasa Utara,5
+67773879795,PPh Final,Kabupaten Kepulauan Sangihe,2
+91247247438,PPh Pasal 22,Kabupaten Bolaang Mongondow,0
+3621252122,PPN Dalam Negeri,Kabupaten Siau Tagulandang Biaro,0
+75112891483,PPh Pasal 21,Kabupaten Minahasa Selatan,5
+49484664461,PPh Migas,Kabupaten Bolaang Mongondow Timur,9
+15962337364,PPN Lainnya,Kota Kotamobagu,1
+80844886822,PPh Pasal 26,Kota Tomohon,1
+63622799747,PPN Lainnya,Kabupaten Minahasa,3
+60002625848,PPh Final,Kabupaten Minahasa Tenggara,2
+48622594189,PPh Pasal 22 Impor,Kabupaten Minahasa,3
+48125013134,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+24281090234,PPh Pasal 25/29 Badan,Kota Tomohon,0
+21916000860,PPh Pasal 22,Kabupaten Kepulauan Sangihe,3
+58624860853,PPh Pasal 26,Kabupaten Bolaang Mongondow Utara,5
+89432862075,PPh Pasal 26,Kabupaten Minahasa Utara,3
+90435067636,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Selatan,3
+30002447800,PPh Pasal 26,Kabupaten Kepulauan Sangihe,1
+4533168290,PPN Dalam Negeri,Kabupaten Minahasa Selatan,0
+61280659152,PPN Impor,Kota Bitung,3
+29042009921,PPN Impor,Kabupaten Bolaang Mongondow Selatan,3
+50869321379,PPh Pasal 25/29 Badan,Kabupaten Minahasa,3
+38470032127,PPN Dalam Negeri,Kota Tomohon,0
+94015773189,Pendapatan PPh DTP,Kota Tomohon,0
+67620140803,PPh Pasal 22 Impor,Kota Bitung,3
+20483954735,Pendapatan PPh DTP,Kota Tomohon,0
+35057282222,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Timur,9
+91126574581,Pajak Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+24861087561,Pendapatan PPh DTP,Kota Tomohon,0
+58879127870,PPh Pasal 25/29 OP,Kota Tomohon,1
+85986008216,PPh Pasal 25/29 OP,Kabupaten Minahasa Utara,3
+73837798877,PPh Pasal 23,Kota Bitung,3
+6482459316,PPh Pasal 26,Kabupaten Minahasa,3
+5904424482,PPN Lainnya,Kabupaten Bolaang Mongondow,1
+64865535040,PPN Lainnya,Kota Bitung,3
+38204066842,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow,0
+5743206534,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow,1
+32589886480,PPh Pasal 23,Kota Bitung,3
+58971912883,PPh Pasal 25/29 Badan,Kota Kotamobagu,2
+26860270807,PPN Dalam Negeri,Kabupaten Minahasa,0
+3306791413,Pendapatan PPh DTP,Kabupaten Minahasa Utara,3
+64243841531,PPh Pasal 26,Kabupaten Bolaang Mongondow Timur,9
+64700882435,PPN Lainnya,Kabupaten Siau Tagulandang Biaro,3
+80152963241,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+59209875367,PPN Impor,Kabupaten Bolaang Mongondow Utara,5
+93315798453,PPh Pasal 22,Kabupaten Kepulauan Sangihe,3
+25215695958,PBB dan BPHTB,Kota Tomohon,0
+80131725075,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Selatan,3
+83753471033,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow,1
+11119858065,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+13593047261,PPN Impor,Kota Kotamobagu,1
+98811016940,PPh Final,Kabupaten Bolaang Mongondow,2
+33376293496,PPh Pasal 26,Kota Tomohon,1
+39379539952,PPN Impor,Kota Bitung,3
+23196498305,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+79288721609,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Timur,9
+64594621509,PPh Pasal 26,Kabupaten Minahasa,3
+78653313229,PPh Pasal 26,Kabupaten Siau Tagulandang Biaro,3
+40030413336,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+82493932575,PPh Pasal 22 Impor,Kabupaten Siau Tagulandang Biaro,3
+48685618309,Pajak Lainnya,Kabupaten Bolaang Mongondow,1
+70953334266,PPh Final,Kabupaten Bolaang Mongondow Timur,2
+54218357325,Pajak Lainnya,Kota Tomohon,1
+38646211350,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+4118930447,PPnBM Lainnya,Kabupaten Bolaang Mongondow,1
+80575118511,Pendapatan PPh DTP,Kota Kotamobagu,1
+46943130191,PPh Migas,Kabupaten Minahasa Utara,3
+24272763142,PPN Lainnya,Kabupaten Bolaang Mongondow,1
+70774226108,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+50324945946,PPN Dalam Negeri,Kabupaten Kepulauan Talaud,0
+87062929248,PPh Pasal 23,Kabupaten Minahasa Selatan,3
+50542368470,PPh Pasal 25/29 OP,Kota Bitung,3
+91026474875,PPh Pasal 23,Kabupaten Bolaang Mongondow Selatan,6
+34021890919,PPh Final,Kabupaten Minahasa,2
+90100403827,PPh Pasal 21,Kabupaten Kepulauan Sangihe,5
+88372820565,Pajak Lainnya,Kabupaten Minahasa Selatan,3
+35055482458,PPh Pasal 25/29 OP,Kabupaten Minahasa Selatan,3
+41149865712,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+76205568299,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+25625402761,PPh Pasal 22,Kota Kotamobagu,3
+76714497668,PPh Pasal 22,Kota Tomohon,0
+1515658796,PPh Final,Kabupaten Minahasa Tenggara,2
+84853222550,PPh Pasal 25/29 OP,Kabupaten Kepulauan Talaud,3
+75765729220,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+14747209462,PPh Pasal 23,Kabupaten Bolaang Mongondow,5
+77997190080,PPN Dalam Negeri,Kota Bitung,0
+59260748052,PPh Pasal 26,Kabupaten Kepulauan Talaud,3
+50858488906,PPN Impor,Kabupaten Minahasa Selatan,3
+73080056141,PBB dan BPHTB,Kabupaten Minahasa,3
+45782093489,PBB dan BPHTB,Kabupaten Minahasa,3
+88820369832,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+38026939043,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+27066229392,PPnBM Lainnya,Kota Kotamobagu,1
+29994165444,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+62914205963,PPh Pasal 26,Kabupaten Bolaang Mongondow Utara,5
+95083631574,PPN Impor,Kabupaten Bolaang Mongondow,1
+87520412068,PPN Lainnya,Kabupaten Bolaang Mongondow Timur,9
+60901368223,PPh Pasal 21,Kota Bitung,5
+49218075465,PPN Lainnya,Kota Bitung,3
+95872253197,PPN Dalam Negeri,Kabupaten Minahasa,0
+44642212512,PBB dan BPHTB,Kabupaten Bolaang Mongondow,0
+45207713823,Pendapatan PPh DTP,Kabupaten Kepulauan Talaud,3
+74977622989,Pendapatan PPh DTP,Kabupaten Bolaang Mongondow Selatan,3
+88952692351,PPN Impor,Kota Tomohon,0
+49022533582,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Selatan,3
+26090758324,PPh Pasal 26,Kabupaten Bolaang Mongondow,1
+39841928778,PPN Dalam Negeri,Kabupaten Minahasa Utara,0
+47003826692,PPh Pasal 26,Kabupaten Bolaang Mongondow Selatan,3
+67943859408,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+8769438933,PPN Lainnya,Kabupaten Minahasa Tenggara,4
+84463425685,PPh Pasal 26,Kabupaten Siau Tagulandang Biaro,3
+55122704285,PPh Pasal 23,Kabupaten Bolaang Mongondow,5
+42081337635,PPh Pasal 22,Kabupaten Minahasa Tenggara,3
+11967484060,PPh Pasal 21,Kabupaten Minahasa Selatan,5
+43632038338,PPh Pasal 22 Impor,Kota Kotamobagu,1
+69426742760,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+27292246893,PPN Dalam Negeri,Kabupaten Minahasa Utara,0
+31444030518,PPh Migas,Kota Bitung,3
+72678912819,PPh Final,Kabupaten Kepulauan Sangihe,2
+39614154318,PPN Lainnya,Kabupaten Minahasa Selatan,3
+43910626410,PPN Impor,Kota Kotamobagu,1
+22430494163,PPN Lainnya,Kabupaten Minahasa Selatan,3
+91746925407,PPh Pasal 25/29 OP,Kota Bitung,3
+88575364105,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+16029613308,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+19595607176,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Selatan,3
+85206149197,Pajak Lainnya,Kabupaten Minahasa Selatan,3
+22233636126,PPh Final,Kabupaten Bolaang Mongondow Selatan,2
+63809756050,PPh Pasal 25/29 Badan,Kabupaten Minahasa,3
+8179486297,Pajak Lainnya,Kabupaten Kepulauan Sangihe,1
+44678095724,PPnBM Lainnya,Kota Tomohon,0
+34435572071,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+11688632445,PPN Dalam Negeri,Kabupaten Siau Tagulandang Biaro,0
+6315590387,Pendapatan PPh DTP,Kota Kotamobagu,1
+43192697675,Pajak Lainnya,Kabupaten Bolaang Mongondow,1
+28013873134,PPN Lainnya,Kabupaten Kepulauan Sangihe,2
+44341147296,PPh Pasal 21,Kota Tomohon,5
+39595894622,PPh Pasal 25/29 Badan,Kabupaten Minahasa Utara,3
+53776618545,PPh Pasal 22 Impor,Kabupaten Minahasa,3
+71370507985,PPh Pasal 25/29 Badan,Kabupaten Minahasa Utara,3
+17542271783,PPh Pasal 25/29 OP,Kabupaten Minahasa Tenggara,6
+16286499948,PPh Pasal 23,Kota Tomohon,5
+94817841632,Pajak Lainnya,Kabupaten Kepulauan Talaud,3
+28875073493,PBB dan BPHTB,Kabupaten Bolaang Mongondow Utara,3
+78830845129,PPN Lainnya,Kabupaten Minahasa,3
+78620560783,PPh Pasal 22,Kabupaten Minahasa Utara,3
+59469857056,PPh Pasal 22 Impor,Kota Kotamobagu,1
+60620547587,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+60822047576,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+92781207058,PPh Pasal 26,Kabupaten Kepulauan Sangihe,1
+14089382356,PPh Pasal 22,Kabupaten Kepulauan Sangihe,3
+95745165064,PPh Pasal 21,Kabupaten Minahasa Utara,5
+41411309266,PPN Lainnya,Kabupaten Kepulauan Talaud,3
+93839403287,PPnBM Lainnya,Kabupaten Minahasa Selatan,3
+75578227060,PBB dan BPHTB,Kabupaten Siau Tagulandang Biaro,3
+73831561352,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+76840731830,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+92394176893,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+61433935208,PPN Dalam Negeri,Kabupaten Kepulauan Sangihe,0
+57793161793,PPh Pasal 21,Kabupaten Minahasa Selatan,5
+96789851431,PPh Pasal 25/29 OP,Kabupaten Kepulauan Sangihe,1
+82538781427,PPh Pasal 25/29 Badan,Kabupaten Minahasa Utara,3
+53163726217,PPh Pasal 23,Kabupaten Minahasa,3
+94865323078,Pajak Lainnya,Kabupaten Minahasa,3
+27692330724,PPN Dalam Negeri,Kota Bitung,0
+91685746905,PPN Lainnya,Kota Bitung,3
+21199941049,PPh Pasal 21,Kabupaten Minahasa Selatan,5
+40886458171,PPh Pasal 22,Kabupaten Kepulauan Talaud,3
+64373148314,Pajak Lainnya,Kota Kotamobagu,1
+96435192284,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Utara,0
+4592285975,PBB dan BPHTB,Kabupaten Siau Tagulandang Biaro,3
+28941263114,Pendapatan PPh DTP,Kota Kotamobagu,1
+23629940231,PPh Pasal 21,Kota Tomohon,5
+6947290841,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+11351799261,PPnBM Lainnya,Kabupaten Minahasa,3
+37644546541,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Sangihe,2
+13921088272,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow,1
+29511313042,PPh Pasal 26,Kabupaten Kepulauan Talaud,3
+74917556690,Pajak Lainnya,Kota Bitung,3
+66293200187,PPh Pasal 21,Kabupaten Bolaang Mongondow Timur,5
+76210743957,PPh Pasal 22,Kabupaten Minahasa,3
+57483843709,Pendapatan PPh DTP,Kabupaten Minahasa,3
+33840117017,PBB dan BPHTB,Kabupaten Kepulauan Talaud,3
+56664467825,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+58345956314,PPh Pasal 25/29 OP,Kabupaten Kepulauan Talaud,3
+2290006002,PPh Pasal 23,Kabupaten Minahasa Utara,3
+11508738245,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow,0
+31230891390,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+53219739462,PPN Lainnya,Kabupaten Bolaang Mongondow,1
+79896837337,PPh Pasal 22,Kabupaten Bolaang Mongondow Selatan,3
+31533681668,PPN Dalam Negeri,Kota Tomohon,0
+18021776063,PPh Pasal 21,Kabupaten Bolaang Mongondow Timur,5
+61304212481,PPh Pasal 25/29 OP,Kabupaten Minahasa Selatan,3
+96713036937,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Selatan,3
+56342000375,PPN Impor,Kabupaten Minahasa Selatan,3
+29528548776,PPh Pasal 22 Impor,Kota Kotamobagu,1
+30113441620,PPh Pasal 25/29 OP,Kabupaten Siau Tagulandang Biaro,3
+16581822621,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+20115939876,PPh Pasal 22,Kabupaten Siau Tagulandang Biaro,3
+81569474179,PPh Pasal 21,Kabupaten Siau Tagulandang Biaro,5
+36295657109,PPN Dalam Negeri,Kabupaten Kepulauan Sangihe,0
+11221142879,PPh Pasal 26,Kota Tomohon,1
+21235602286,PPN Dalam Negeri,Kabupaten Kepulauan Talaud,0
+71702195162,PPh Pasal 26,Kota Tomohon,1
+98465302141,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+12740479982,PPh Pasal 23,Kabupaten Kepulauan Sangihe,8
+60291592587,PPnBM Lainnya,Kota Kotamobagu,1
+73174577264,PPh Pasal 21,Kabupaten Kepulauan Sangihe,5
+23783496671,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Sangihe,2
+33361106146,PPh Migas,Kabupaten Bolaang Mongondow,1
+10660195367,PPh Pasal 25/29 OP,Kota Bitung,3
+58430369128,PBB dan BPHTB,Kabupaten Siau Tagulandang Biaro,3
+51420860116,PPh Pasal 22,Kabupaten Minahasa Utara,3
+5757306226,PPN Dalam Negeri,Kabupaten Minahasa Utara,0
+46056855631,PPN Lainnya,Kabupaten Bolaang Mongondow Timur,9
+44120173368,PBB dan BPHTB,Kabupaten Kepulauan Talaud,3
+40289080599,PPN Lainnya,Kabupaten Minahasa Selatan,3
+65957147113,PPh Final,Kabupaten Kepulauan Sangihe,2
+66351737751,PPh Pasal 22,Kota Bitung,3
+54796497295,PPh Pasal 25/29 OP,Kabupaten Minahasa Tenggara,6
+29874007615,Pendapatan PPh DTP,Kabupaten Kepulauan Talaud,3
+54166784402,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow,1
+53701770923,PPh Pasal 23,Kabupaten Kepulauan Sangihe,8
+58663750678,Pajak Lainnya,Kabupaten Minahasa Selatan,3
+75857292886,PPh Final,Kabupaten Kepulauan Talaud,2
+62954327380,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+9801644212,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+37405596317,PPh Migas,Kabupaten Bolaang Mongondow Timur,9
+4697105857,PPh Migas,Kabupaten Bolaang Mongondow Utara,5
+7672542593,PPh Pasal 22 Impor,Kota Kotamobagu,1
+29795538818,PPnBM Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+79500395281,PPh Pasal 26,Kabupaten Bolaang Mongondow Timur,9
+36865356505,PPN Lainnya,Kabupaten Bolaang Mongondow Utara,5
+12769766815,PPh Pasal 21,Kota Bitung,5
+2964312082,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Utara,5
+93802041249,PPN Impor,Kabupaten Minahasa Tenggara,3
+51249782513,PPN Dalam Negeri,Kabupaten Kepulauan Sangihe,0
+81183600482,Pajak Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+11460179723,PPh Migas,Kabupaten Bolaang Mongondow Timur,9
+53961478596,PBB dan BPHTB,Kabupaten Kepulauan Sangihe,2
+2949494629,PPh Pasal 23,Kabupaten Bolaang Mongondow Selatan,6
+29664628834,PPN Lainnya,Kota Bitung,3
+1194753198,PPnBM Lainnya,Kabupaten Minahasa,3
+36568732496,PPh Pasal 22 Impor,Kota Kotamobagu,1
+95321773463,PPN Dalam Negeri,Kabupaten Kepulauan Sangihe,0
+56121191819,PPh Pasal 26,Kabupaten Siau Tagulandang Biaro,3
+42126705459,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+33276555280,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Utara,5
+24654057772,PPN Lainnya,Kabupaten Kepulauan Sangihe,2
+24446492005,PPN Dalam Negeri,Kota Tomohon,0
+93490016195,PPN Dalam Negeri,Kabupaten Minahasa,0
+55740010354,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow,0
+55695079668,PPN Lainnya,Kota Tomohon,0
+45554771228,PPh Pasal 22,Kota Kotamobagu,3
+22498503054,PPN Dalam Negeri,Kota Bitung,0
+33670607340,PPh Pasal 25/29 Badan,Kabupaten Minahasa,3
+60195398094,Pajak Lainnya,Kabupaten Minahasa,3
+1546097492,PPh Pasal 25/29 OP,Kabupaten Kepulauan Sangihe,1
+68283542733,PPh Migas,Kabupaten Bolaang Mongondow Timur,9
+3449994938,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Selatan,3
+17684661149,PPN Impor,Kota Tomohon,0
+65726564283,PPN Impor,Kabupaten Bolaang Mongondow,1
+32515562419,PPN Dalam Negeri,Kabupaten Minahasa,0
+48546052824,PPnBM Lainnya,Kabupaten Minahasa Selatan,3
+6684821053,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Selatan,3
+91487327587,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+85339819813,PPh Pasal 22,Kota Tomohon,0
+27900429926,PPh Pasal 22,Kabupaten Bolaang Mongondow,0
+79009156964,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+9813739532,PPN Dalam Negeri,Kabupaten Bolaang Mongondow,0
+87661375800,PBB dan BPHTB,Kabupaten Kepulauan Talaud,3
+88086883869,PPnBM Lainnya,Kabupaten Bolaang Mongondow Utara,5
+42902326903,PPh Pasal 22,Kabupaten Minahasa Selatan,3
+43202607060,PBB dan BPHTB,Kabupaten Minahasa,3
+88601092917,PPh Pasal 25/29 OP,Kabupaten Minahasa,3
+5229120540,PBB dan BPHTB,Kota Bitung,3
+80423107191,PPnBM Lainnya,Kabupaten Bolaang Mongondow Timur,9
+54800359353,PPh Pasal 22 Impor,Kabupaten Minahasa,3
+9749351232,PPh Final,Kabupaten Bolaang Mongondow Selatan,2
+17808480074,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+80455601340,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+26193612876,PPN Impor,Kabupaten Minahasa Utara,3
+66524788453,PPh Pasal 22 Impor,Kabupaten Minahasa Tenggara,6
+19769362918,PPh Pasal 22,Kabupaten Minahasa,3
+88567568943,PPh Pasal 22 Impor,Kota Kotamobagu,1
+41319528272,PBB dan BPHTB,Kabupaten Siau Tagulandang Biaro,3
+84873566503,PPh Pasal 22,Kabupaten Minahasa Tenggara,3
+84440889556,PPh Pasal 26,Kabupaten Kepulauan Sangihe,1
+42436228865,Pajak Lainnya,Kota Bitung,3
+8587951178,PPN Dalam Negeri,Kota Bitung,0
+1688519380,PPh Pasal 22 Impor,Kota Bitung,3
+19159046892,PPh Final,Kabupaten Bolaang Mongondow,2
+18237904978,PPh Pasal 22,Kabupaten Kepulauan Talaud,3
+80140150466,PPnBM Lainnya,Kabupaten Bolaang Mongondow,1
+57992268633,PPh Pasal 21,Kabupaten Siau Tagulandang Biaro,5
+85750332264,PPh Final,Kabupaten Minahasa,2
+72415991761,PPh Migas,Kabupaten Minahasa Utara,3
+57807372759,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Utara,5
+69148127391,PPN Dalam Negeri,Kabupaten Kepulauan Sangihe,0
+70758595734,Pendapatan PPh DTP,Kota Kotamobagu,1
+41490375646,PPh Pasal 25/29 Badan,Kota Bitung,3
+57139746202,PPN Impor,Kota Tomohon,0
+58259358454,PPh Pasal 25/29 OP,Kota Kotamobagu,7
+54250012689,PPh Final,Kota Tomohon,2
+13516552945,Pajak Lainnya,Kabupaten Minahasa,3
+2372434300,PPh Pasal 22 Impor,Kota Kotamobagu,1
+6744804674,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+37353963757,PPh Pasal 25/29 OP,Kota Bitung,3
+16806399325,Pendapatan PPh DTP,Kabupaten Kepulauan Sangihe,2
+35632762617,PPh Pasal 26,Kabupaten Minahasa,3
+95254235394,PPh Final,Kabupaten Siau Tagulandang Biaro,2
+84923631192,PPN Dalam Negeri,Kota Kotamobagu,0
+52802897279,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+38512356301,PPh Pasal 22,Kabupaten Bolaang Mongondow Selatan,3
+18155968868,PPh Pasal 21,Kabupaten Minahasa,5
+90683771477,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Utara,5
+96483304020,PPh Pasal 25/29 Badan,Kabupaten Minahasa,3
+28618623340,PPN Lainnya,Kabupaten Kepulauan Sangihe,2
+66868640124,PPh Final,Kabupaten Bolaang Mongondow Utara,2
+39976642552,PPh Migas,Kota Kotamobagu,1
+16263905794,PPN Impor,Kabupaten Bolaang Mongondow Selatan,3
+85071712445,PPh Migas,Kabupaten Siau Tagulandang Biaro,3
+48925527156,PPN Lainnya,Kabupaten Minahasa Selatan,3
+77352203097,PPh Migas,Kabupaten Minahasa,3
+11160052605,PBB dan BPHTB,Kabupaten Minahasa,3
+85764428444,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow,1
+58646714537,Pajak Lainnya,Kabupaten Minahasa Selatan,3
+20825052934,PPN Impor,Kabupaten Bolaang Mongondow Utara,5
+8006595382,PPh Final,Kota Tomohon,2
+46478257439,PPh Pasal 23,Kabupaten Minahasa Utara,3
+1968266373,Pajak Lainnya,Kabupaten Minahasa Utara,3
+89670299093,PPh Pasal 26,Kota Kotamobagu,1
+95411022671,PPN Impor,Kabupaten Kepulauan Talaud,3
+6073615477,PBB dan BPHTB,Kabupaten Bolaang Mongondow Utara,3
+95650422450,PPh Migas,Kabupaten Minahasa Selatan,3
+88229802614,PPnBM Lainnya,Kabupaten Minahasa,3
+43039947222,Pendapatan PPh DTP,Kabupaten Minahasa Selatan,3
+16489284869,PPh Pasal 22 Impor,Kota Bitung,3
+42513328939,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Utara,5
+18054848197,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Talaud,3
+22217794962,PPN Dalam Negeri,Kota Bitung,0
+35194662019,PPnBM Lainnya,Kabupaten Siau Tagulandang Biaro,4
+78643727191,PPh Final,Kabupaten Bolaang Mongondow Timur,2
+9240801287,PPN Impor,Kota Bitung,3
+36933115489,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+4158440714,PPh Pasal 26,Kabupaten Kepulauan Talaud,3
+60315220072,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+12157071042,PPN Dalam Negeri,Kabupaten Kepulauan Talaud,0
+58790731606,PPh Pasal 26,Kota Kotamobagu,1
+63192846026,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+19431066202,PPh Pasal 26,Kota Tomohon,1
+84859521543,PPnBM Lainnya,Kabupaten Siau Tagulandang Biaro,4
+79197300625,PPh Pasal 23,Kabupaten Bolaang Mongondow Timur,3
+5965210300,PPN Impor,Kabupaten Bolaang Mongondow Utara,5
+80907386506,PPN Impor,Kota Tomohon,0
+56277109238,PPN Impor,Kabupaten Kepulauan Talaud,3
+60365451387,PPh Pasal 26,Kabupaten Kepulauan Sangihe,1
+83271071998,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+81756378333,PPh Pasal 21,Kabupaten Minahasa Selatan,5
+22561999652,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+47414909340,PPnBM Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+70446597493,PPh Pasal 22,Kabupaten Minahasa,3
+83319977290,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+45371924878,PPh Final,Kabupaten Kepulauan Talaud,2
+49658811607,PPh Pasal 23,Kabupaten Kepulauan Talaud,3
+95004369071,PPN Lainnya,Kabupaten Minahasa Selatan,3
+76202828650,PPh Pasal 23,Kabupaten Bolaang Mongondow Timur,3
+98053515969,PPh Pasal 22 Impor,Kabupaten Minahasa Selatan,3
+76696439181,PPh Pasal 23,Kabupaten Minahasa Utara,3
+99871903995,PPN Lainnya,Kabupaten Minahasa,3
+15734956932,PBB dan BPHTB,Kabupaten Bolaang Mongondow Timur,3
+31974294840,PPh Migas,Kabupaten Bolaang Mongondow,1
+62985147601,PBB dan BPHTB,Kota Bitung,3
+4595832726,PPN Dalam Negeri,Kabupaten Bolaang Mongondow,0
+93143494251,PBB dan BPHTB,Kabupaten Minahasa Utara,3
+77991199725,PPh Pasal 21,Kabupaten Bolaang Mongondow Timur,5
+1956009665,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+89143478262,PPh Pasal 25/29 OP,Kabupaten Bolaang Mongondow Selatan,3
+28224975056,PPnBM Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+43715970349,PPh Migas,Kabupaten Minahasa Tenggara,3
+67354873271,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+92180060411,PPN Dalam Negeri,Kota Bitung,0
+89752126319,PPN Impor,Kabupaten Bolaang Mongondow Selatan,3
+97362044181,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+27224304467,PPh Pasal 23,Kota Tomohon,5
+20911163660,PPh Pasal 22 Impor,Kota Tomohon,0
+21836818558,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Timur,3
+11915276920,PPN Dalam Negeri,Kabupaten Siau Tagulandang Biaro,0
+63547496844,PPh Pasal 21,Kabupaten Bolaang Mongondow Utara,5
+96975999378,Pendapatan PPh DTP,Kabupaten Minahasa Tenggara,3
+18567997544,PPh Pasal 22 Impor,Kabupaten Minahasa,3
+23486015384,PPN Impor,Kabupaten Bolaang Mongondow,1
+8773524648,Pendapatan PPh DTP,Kota Kotamobagu,1
+62393356025,PPh Pasal 26,Kabupaten Minahasa Selatan,3
+84988876244,PPh Pasal 22,Kota Kotamobagu,3
+43384934757,PPN Lainnya,Kabupaten Bolaang Mongondow Utara,5
+61793012525,PPh Pasal 22,Kabupaten Minahasa Tenggara,3
+87523803511,PPh Pasal 25/29 Badan,Kabupaten Minahasa Tenggara,3
+38607780783,PPh Migas,Kabupaten Kepulauan Talaud,3
+65872834567,PPN Dalam Negeri,Kabupaten Minahasa Tenggara,0
+12017149920,PPh Pasal 22,Kabupaten Siau Tagulandang Biaro,3
+58035359489,PPN Impor,Kabupaten Minahasa Selatan,3
+50921328467,PPh Pasal 22 Impor,Kabupaten Siau Tagulandang Biaro,3
+61439073965,PPh Pasal 22 Impor,Kabupaten Bolaang Mongondow Selatan,3
+34022962383,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+20344100036,PPh Pasal 25/29 Badan,Kabupaten Kepulauan Sangihe,2
+37606412415,PBB dan BPHTB,Kota Kotamobagu,3
+63623984243,PPh Pasal 22 Impor,Kabupaten Kepulauan Sangihe,2
+19883088850,PPh Migas,Kabupaten Minahasa Tenggara,3
+32148155863,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+71428872877,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+52133858238,PPh Migas,Kabupaten Kepulauan Sangihe,2
+20994724113,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+53948500239,PPh Final,Kota Bitung,2
+58257700663,PPN Dalam Negeri,Kota Bitung,0
+92972065118,PPh Migas,Kabupaten Kepulauan Talaud,3
+30959717544,PPnBM Lainnya,Kabupaten Kepulauan Sangihe,2
+96753397127,PPnBM Lainnya,Kabupaten Siau Tagulandang Biaro,4
+49719631068,PPnBM Lainnya,Kabupaten Minahasa Utara,3
+82124350201,PBB dan BPHTB,Kota Bitung,3
+26953247208,Pendapatan PPh DTP,Kabupaten Kepulauan Talaud,3
+11359097030,PPh Pasal 22 Impor,Kabupaten Siau Tagulandang Biaro,3
+15203164468,PPh Pasal 22,Kota Bitung,3
+67410939383,PPnBM Lainnya,Kabupaten Siau Tagulandang Biaro,4
+53530907343,PPh Pasal 25/29 Badan,Kabupaten Minahasa Utara,3
+64781811439,PPh Pasal 22 Impor,Kota Bitung,3
+4799097680,PPh Pasal 23,Kabupaten Minahasa Tenggara,6
+53432540708,PPh Pasal 21,Kabupaten Siau Tagulandang Biaro,5
+24432930617,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Utara,3
+37429595779,PPh Final,Kabupaten Bolaang Mongondow Timur,2
+57244787964,PPh Migas,Kota Tomohon,0
+13449155780,PPh Pasal 26,Kabupaten Siau Tagulandang Biaro,3
+27306162218,PPh Pasal 21,Kabupaten Bolaang Mongondow Selatan,5
+95435938765,PPh Pasal 22,Kabupaten Bolaang Mongondow Timur,3
+7178425624,PBB dan BPHTB,Kabupaten Bolaang Mongondow Selatan,3
+3601583907,PBB dan BPHTB,Kabupaten Bolaang Mongondow Timur,3
+17977208829,PPnBM Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+52888668442,PPnBM Lainnya,Kota Tomohon,0
+1240324054,PBB dan BPHTB,Kabupaten Minahasa Utara,3
+78271440826,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow Timur,3
+29437065312,PPh Pasal 25/29 Badan,Kabupaten Bolaang Mongondow,0
+26175256211,PPN Lainnya,Kabupaten Siau Tagulandang Biaro,3
+39816407065,PPN Impor,Kabupaten Minahasa,3
+16363250506,PPnBM Lainnya,Kabupaten Kepulauan Talaud,3
+43384156574,PBB dan BPHTB,Kabupaten Minahasa,3
+62953095316,Pajak Lainnya,Kota Tomohon,1
+69563178508,PPN Impor,Kota Kotamobagu,1
+77113759372,PPh Pasal 21,Kabupaten Kepulauan Sangihe,5
+43846827660,PPh Pasal 21,Kabupaten Minahasa Tenggara,5
+83476171494,PPh Pasal 26,Kabupaten Bolaang Mongondow Timur,9
+20876028795,PPN Lainnya,Kabupaten Bolaang Mongondow Selatan,3
+67624189453,PBB dan BPHTB,Kabupaten Minahasa,3
+30071594927,Pajak Lainnya,Kabupaten Minahasa Tenggara,6
+46710046067,PPN Lainnya,Kota Kotamobagu,1
+55558391544,PPh Pasal 23,Kabupaten Minahasa Utara,3
+94265382445,PPh Pasal 23,Kabupaten Bolaang Mongondow Timur,3
+39193617025,Pajak Lainnya,Kota Kotamobagu,1
+53974714017,PPh Pasal 22 Impor,Kota Bitung,3
+91633128713,PPN Dalam Negeri,Kabupaten Siau Tagulandang Biaro,0
+19126349045,PPN Dalam Negeri,Kota Bitung,0
+80052549228,PBB dan BPHTB,Kota Tomohon,0
+54996561916,PPh Pasal 25/29 OP,Kabupaten Kepulauan Talaud,3
+91059793304,PPN Impor,Kabupaten Minahasa,3
+17560424984,PPh Pasal 23,Kabupaten Minahasa Utara,3
+92327388991,PPh Pasal 25/29 Badan,Kabupaten Minahasa Selatan,3
+43075448299,Pendapatan PPh DTP,Kota Kotamobagu,1
+14909193250,PPnBM Lainnya,Kabupaten Minahasa Selatan,3
+76321659595,PPN Lainnya,Kabupaten Minahasa Tenggara,4
+19421402176,Pajak Lainnya,Kabupaten Minahasa Tenggara,6
+47718138228,PPh Final,Kabupaten Bolaang Mongondow Timur,2
+42829954390,PPh Pasal 21,Kabupaten Bolaang Mongondow,5
+32022852830,PPh Pasal 22 Impor,Kota Kotamobagu,1
+24550870123,PPnBM Lainnya,Kabupaten Kepulauan Talaud,3
+77281122246,PPh Pasal 25/29 Badan,Kota Tomohon,0
+13199969777,PBB dan BPHTB,Kabupaten Bolaang Mongondow Timur,3
+21437644434,PPN Dalam Negeri,Kabupaten Bolaang Mongondow Selatan,0
+45543791150,PPN Impor,Kabupaten Minahasa Utara,3
+5400023395,PPh Pasal 22 Impor,Kabupaten Minahasa Utara,3
+19371476430,PBB dan BPHTB,Kota Kotamobagu,3

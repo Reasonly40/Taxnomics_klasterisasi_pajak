@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}TaxNomics{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block head_extra %}{% endblock %}
+    <style>
+        /* Smooth sidebar transition */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Sidebar geser keluar hanya di mobile */
+        @media (max-width: 767px) {
+            #sidebar.closed {
+                transform: translateX(-100%);
+            }
+        }
+        /* Di desktop, sidebar tidak geser */
+        @media (min-width: 768px) {
+            #sidebar {
+                transform: translateX(0) !important;
+            }
+        }
+        /* Transisi untuk padding konten utama */
+        #mainContent {
+            transition: padding-left 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed z-30 left-0 top-0 w-64 h-full bg-blue-800 text-white flex flex-col shadow-lg">
+        <div class="p-4 border-b border-blue-700 flex items-center justify-between">
+            <!-- Logo + Nama -->
+            <div class="flex items-center space-x-3">
+                <img src="{{ url_for('static', filename='image/logo_app_untitle.png') }}" 
+                     alt="Logo" 
+                     class="w-20 h-20 object-contain">
+                <div>
+                    <div class="text-2xl font-bold leading-tight">TaxNomics</div>
+                </div>
+            </div>
+        
+            <!-- Tombol tutup -->
+            <button id="closeSidebarBtn" class="md:hidden text-white focus:outline-none" title="Tutup Sidebar">
+                &times;
+            </button>
+        </div>        
+        
+        <!-- Menu Navigasi -->
+        <nav class="flex-1 p-4 space-y-2 overflow-auto">
+            <a href="{{ url_for('predict') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='predict' %}bg-blue-900{% endif %}">Clustering</a>
+            <a href="{{ url_for('upload') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='upload' %}bg-blue-900{% endif %}">Upload Data</a>
+            <a href="{{ url_for('stats_page') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='stats_page' %}bg-blue-900{% endif %}">Hasil Clustering</a>
+            <a href="{{ url_for('info_cluster') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='info_cluster' %}bg-blue-900{% endif %}">Informasi Clustering</a>
+            <a href="{{ url_for('sarima_predict') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='sarima_predict' %}bg-blue-900{% endif %}">Prediksi PDRB</a>
+            <a href="{{ url_for('map_page') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='map_page' %}bg-blue-900{% endif %}">Peta Interaktif</a>
+            
+            {% if session.get('role') == 'admin' %}
+            <a href="{{ url_for('manage_users') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='manage_users' %}bg-blue-900{% endif %}">
+                Manajemen Akun
+            </a>
+            <a href="{{ url_for('login_history') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='login_history' %}bg-blue-900{% endif %}">
+                History Login
+            </a>
+            {% endif %}
+        </nav>
+
+        <!-- Tombol Logout -->
+        <div class="p-4 border-t border-blue-700">
+            <a href="{{ url_for('logout') }}" class="block bg-red-600 text-white px-3 py-2 rounded hover:bg-red-700 w-24 text-center mx-auto">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main content wrapper -->
+    <div id="mainContent" class="flex-1 flex flex-col min-h-screen md:pl-64">
+
+        <!-- Header -->
+        <header class="bg-white shadow p-4 flex items-center justify-between">
+            <button id="openSidebarBtn" class="md:hidden text-gray-700 focus:outline-none" title="Buka Sidebar">
+                &#9776;
+            </button>
+            <div class="text-lg font-semibold text-gray-700">
+                {% set hour = now.hour %}
+                {% if 4 <= hour < 10 %}
+                    Selamat pagi
+                {% elif 10 <= hour < 15 %}
+                    Selamat siang
+                {% elif 15 <= hour < 18 %}
+                    Selamat sore
+                {% else %}
+                    Selamat malam
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                    <span class="capitalize"> {{ current_user.nama_lengkap }}</span>!
+                {% else %}
+                    !
+                {% endif %}
+            </div>            
+        </header>
+
+        <!-- Flash messages + Content -->
+        <main class="flex-grow p-6 bg-gray-100">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="mb-4 space-y-2">
+                        {% for category, message in messages %}
+                            <div class="p-3 rounded text-white 
+                                {% if category == 'error' %}bg-red-600
+                                {% elif category == 'success' %}bg-green-600
+                                {% else %}bg-blue-600
+                                {% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </main>
+
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const openBtn = document.getElementById('openSidebarBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function updateLayout() {
+            if(window.innerWidth >= 768) {
+                if(sidebar.classList.contains('closed')) {
+                    mainContent.style.paddingLeft = '0';
+                } else {
+                    mainContent.style.paddingLeft = '16rem';
+                }
+                sidebar.style.transform = 'translateX(0)';
+            } else {
+                mainContent.style.paddingLeft = '0';
+                if(sidebar.classList.contains('closed')) {
+                    sidebar.style.transform = 'translateX(-100%)';
+                } else {
+                    sidebar.style.transform = 'translateX(0)';
+                }
+            }
+        }
+
+        openBtn.addEventListener('click', () => {
+            sidebar.classList.remove('closed');
+            updateLayout();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.add('closed');
+            updateLayout();
+        });
+
+        function init() {
+            if(window.innerWidth < 768) {
+                sidebar.classList.add('closed');
+            } else {
+                sidebar.classList.remove('closed');
+            }
+            updateLayout();
+        }
+        window.addEventListener('resize', init);
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
