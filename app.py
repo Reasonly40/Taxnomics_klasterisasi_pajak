@@ -914,7 +914,7 @@ print(app.url_map)
 
 @app.route("/")
 def home():
-    return render_template("login.html")
+    return render_template("clustering.html")
 
 if __name__ == "__main__":
     # Buat database jika belum ada
