@@ -919,7 +919,7 @@ print(app.url_map)
 
 @app.route("/")
 def home():
-    return render_template("templates/login.html")
+    return render_template("login.html")
 
 if __name__ == "__main__":
     # Buat database jika belum ada
