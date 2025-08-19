@@ -917,6 +917,10 @@ print(app.url_map)
 # Run
 # -------------------------
 
+@app.route("/")
+def home():
+    return "Hello from Flask on Vercel!"
+
 if __name__ == "__main__":
     # Buat database jika belum ada
     if not os.path.exists(USERS_DB):
