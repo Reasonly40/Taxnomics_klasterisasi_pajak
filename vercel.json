@@ -1,19 +1,8 @@
 {
-<<<<<<< HEAD
-  "builds": [
-    { "src": "app.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "app.py" }
-  ]
-}
-=======
     "builds": [
       { "src": "app.py", "use": "@vercel/python" }
     ],
     "routes": [
       { "src": "/(.*)", "dest": "app.py" }
     ]
-  }
-  
->>>>>>> 66d7629 (update vercel.json)
+}
