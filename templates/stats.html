@@ -39,6 +39,30 @@
     table.stats-table tr:nth-child(odd) {
         background-color: hsl(var(--b2)); 
     }
+    /* Gaya khusus untuk mode cetak (print) */
+    @media print {
+        /* Sembunyikan semua elemen yang tidak perlu dicetak */
+        #sidebar, header, .card:nth-child(2) /* Sembunyikan sidebar, header, dan panel kontrol */ {
+            display: none !important;
+        }
+
+        /* Pastikan konten utama menggunakan seluruh lebar halaman */
+        #mainContent {
+            padding-left: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Atur agar card tidak memiliki shadow atau background berlebihan saat dicetak */
+        .card {
+            box-shadow: none !important;
+            border: 1px solid #ccc;
+            page-break-inside: avoid; /* Mencegah card terpotong di antara halaman */
+        }
+        
+        body {
+            background-color: #ffffff !important; /* Pastikan background putih */
+        }
+    }
 </style>
 {% endblock %}
 
@@ -68,7 +92,7 @@
                 {% endif %}
             </div>
             <div class="flex gap-3">
-                <button id="downloadStatsBtn" class="btn btn-success">Download Statistik CSV</button>
+                <button id="downloadStatsBtn" class="btn btn-success">Download PDF</button>
                 <button id="viewClusteringBtn" class="btn btn-primary">Lihat Hasil Clustering</button>
             </div>
         </div>
@@ -849,9 +873,7 @@
     });
 
     downloadBtn.addEventListener("click", () => {
-        const filename = fileSelect.value;
-        if (!filename) return;
-        window.open(`/api/stats/download/${encodeURIComponent(filename)}`, "_blank");
+        window.print();
     });
 
     viewClusteringBtn.addEventListener("click", () => {

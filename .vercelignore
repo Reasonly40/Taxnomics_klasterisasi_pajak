@@ -1,0 +1,34 @@
+# Jangan upload dependensi lokal
+node_modules
+package-lock.json
+yarn.lock
+
+# Cache build
+.next/cache
+*.log
+
+# Folder eksperimen / sementara
+__pycache__/
+*.ipynb_checkpoints
+tmp/
+logs/
+
+# Dataset & model besar (lebih baik disimpan di luar Vercel)
+data/
+datasets/
+models/
+checkpoints/
+*.h5
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.joblib
+*.pickle
+*.pkl
+
+# File berat lain
+*.zip
+*.tar.gz
+*.rar
+*.7z

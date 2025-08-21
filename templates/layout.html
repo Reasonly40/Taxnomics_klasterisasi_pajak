@@ -2,6 +2,7 @@
 <html lang="id" data-theme="winter">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}TaxNomics{% endblock %}</title>
     
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
@@ -16,29 +17,44 @@
       }
     </script>
 
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+        })();
+    </script>
+
     {% block head_extra %}{% endblock %}
+
     <style>
-        /* Smooth sidebar transition */
-        #sidebar {
-            transition: transform 0.3s ease-in-out;
+        /* Transisi untuk sidebar dan konten utama */
+        #sidebar, #mainContent {
+            transition: all 0.3s ease-in-out;
         }
-        /* Sidebar geser keluar hanya di mobile */
+
+        /* --- PERILAKU DI MOBILE (Overlay) --- */
         @media (max-width: 767px) {
+            #sidebar {
+                /* Secara default, sidebar terlihat (transform: 0) */
+                transform: translateX(0);
+            }
             #sidebar.closed {
+                /* Saat class .closed ditambahkan, sidebar geser ke kiri (keluar layar) */
                 transform: translateX(-100%);
             }
         }
-        /* Di desktop, sidebar tidak geser */
+
+        /* --- PERILAKU DI DESKTOP (Static/Push) --- */
         @media (min-width: 768px) {
             #sidebar {
+                /* Di desktop, sidebar selalu terlihat dan tidak bisa digeser */
                 transform: translateX(0) !important;
             }
         }
-        /* Transisi untuk padding konten utama */
-        #mainContent {
-            transition: padding-left 0.3s ease-in-out;
-        }
     </style>
+
 </head>
 <body class="bg-base-200">
 
@@ -80,14 +96,15 @@
         </div>
     </aside>
 
-    <div id="mainContent" class="flex-1 flex flex-col min-h-screen md:pl-64">
+    <div id="sidebarBackdrop" class="fixed inset-0 bg-black/50 z-20 hidden"></div>
 
+    <div id="mainContent" class="flex-1 flex flex-col min-h-screen md:pl-64">
         <header class="bg-base-100 shadow-md p-4 flex items-center justify-between sticky top-0 z-20 border-b border-base-300">
             <div class="flex items-center gap-2">
                 <button id="openSidebarBtn" class="md:hidden btn btn-sm btn-ghost" title="Buka Sidebar">
                     ☰
                 </button>
-                <div class="text-lg font-semibold text-base-content">
+                <div class="text-base sm:text-lg font-semibold text-base-content">
                     {% set hour = now.hour %}
                     {% if 4 <= hour < 10 %}
                         Selamat pagi,
@@ -107,60 +124,90 @@
             </div>
             
             <label class="swap swap-rotate btn btn-ghost btn-circle">
-                <input type="checkbox" class="theme-controller" value="night" />
-                <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17l-1.41 1.41L4.23 15.59 5.64 17zm-1.41-10L5.64 7 4.23 5.59 2.82 7zM12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1zm7.78 4.22a1 1 0 01.01 1.4l-1.4 1.4a1 1 0 01-1.42-1.41l1.4-1.4a1 1 0 011.41 0zM12 18a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zm5.59-2.83a1 1 0 011.41 1.41l-1.41 1.4a1 1 0 01-1.41-1.41l1.41-1.4zM4.22 19.78a1 1 0 010-1.41l1.4-1.4a1 1 0 111.42 1.41l-1.4 1.4a1 1 0 01-1.41 0zM22 12a1 1 0 01-1 1h-2a1 1 0 010-2h2a1 1 0 011 1zM3 12a1 1 0 01-1 1H0a1 1 0 010-2h2a1 1 0 011 1zm9-7a5 5 0 00-5 5a1 1 0 11-2 0a7 7 0 017-7a1 1 0 110 2z"/></svg>
-                <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64 13.14a1 1 0 00-1.05-.14l-2.09.73A1 1 0 0117 12.86a1 1 0 01.38-1.45l2.09-.73a1 1 0 00.14-1.05a9 9 0 00-11.41-1.55a1 1 0 00-.39 1.45l-2.09.73a1 1 0 01-1.3-1.3l2.09-.73A1 1 0 004.36 3.64a9 9 0 00-1.55 11.41a1 1 0 001.05.14l2.09-.73a1 1 0 011.3 1.3l-2.09.73a1 1 0 00-.14 1.05a9 9 0 0011.41 1.55a1 1 0 00.39-1.45l2.09-.73a1 1 0 011.3 1.3l-2.09.73a1 1 0 00.14 1.05a9 9 0 005.18-7.39a1 1 0 00-.14-1.05l-2.09-.73a1 1 0 01-1.3-1.3l2.09-.73a1 1 0 00.14-1.05z"/></svg>
+                <input id="theme-controller-checkbox" type="checkbox" class="theme-controller" value="night" />
+                
+                <svg class="swap-off w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"></path>
+                </svg>
+
+                <svg class="swap-on w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                </svg>
             </label>
         </header>
 
-        <main class="flex-grow p-6 bg-base-100">
+        <main class="flex-grow p-4 sm:p-6 bg-base-100">
             {% block content %}{% endblock %}
         </main>
-
     </div>
 
     <script>
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContent');
-        const openBtn = document.getElementById('openSidebarBtn');
-        const closeBtn = document.getElementById('closeSidebarBtn');
+    // --- Ambil semua elemen yang dibutuhkan ---
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+    const themeController = document.getElementById('theme-controller-checkbox');
 
-        function updateLayout() {
-            if(window.innerWidth >= 768) { // Desktop
-                mainContent.style.paddingLeft = '16rem'; // 16rem = w-64
-                sidebar.classList.remove('closed'); // Pastikan sidebar selalu terbuka di desktop
-                sidebar.style.transform = 'translateX(0)';
-            } else { // Mobile
-                mainContent.style.paddingLeft = '0';
-                if(sidebar.classList.contains('closed')) {
-                    sidebar.style.transform = 'translateX(-100%)';
-                } else {
-                    sidebar.style.transform = 'translateX(0)';
-                }
-            }
-        }
+    // --- FUNGSI KHUSUS UNTUK INTERAKSI SIDEBAR DI MOBILE ---
+    function openMobileSidebar() {
+        if (sidebar) sidebar.classList.remove('closed');
+        if (backdrop) backdrop.classList.remove('hidden');
+    }
 
-        openBtn.addEventListener('click', () => {
-            sidebar.classList.remove('closed');
-            updateLayout();
+    function closeMobileSidebar() {
+        if (sidebar) sidebar.classList.add('closed');
+        if (backdrop) backdrop.classList.add('hidden');
+    }
+    
+    // --- FUNGSI UNTUK MENGATUR ULANG STATE SAAT UKURAN LAYAR BERUBAH ---
+    function handleResize() {
+         // Jika user mengubah ukuran window ke mode desktop
+         if (window.innerWidth >= 768) {
+            // Pastikan backdrop selalu tersembunyi di desktop
+            if (backdrop) backdrop.classList.add('hidden');
+         }
+    }
+
+    // --- LOGIKA TEMA GELAP/TERANG (TIDAK BERUBAH) ---
+    function syncThemeCheckbox() {
+        if (!themeController) return; 
+        const savedTheme = localStorage.getItem('theme');
+        themeController.checked = (savedTheme === 'night');
+    }
+
+    if (themeController) {
+        themeController.addEventListener('change', () => {
+            const theme = themeController.checked ? 'night' : 'winter';
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
         });
+    }
 
-        closeBtn.addEventListener('click', () => {
-            sidebar.classList.add('closed');
-            updateLayout();
-        });
-
-        function init() {
-            if(window.innerWidth < 768) {
-                sidebar.classList.add('closed');
-            } else {
-                sidebar.classList.remove('closed');
-            }
-            updateLayout();
+    // --- INISIALISASI SAAT HALAMAN PERTAMA KALI DIMUAT ---
+    function initializeApp() {
+        // Saat halaman mobile dimuat, pastikan sidebar dalam kondisi tertutup
+        if (window.innerWidth < 768) {
+            if (sidebar) sidebar.classList.add('closed');
         }
-        
-        window.addEventListener('resize', init);
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+        syncThemeCheckbox(); // Sinkronisasi checkbox tema
+    }
+
+    // --- DAFTARKAN SEMUA EVENT LISTENER ---
+
+    // Saat halaman selesai dimuat, jalankan inisialisasi
+    document.addEventListener('DOMContentLoaded', initializeApp);
+    
+    // Saat ukuran window diubah, jalankan fungsi handleResize
+    window.addEventListener('resize', handleResize);
+
+    // Event listener untuk tombol-tombol
+    if (openBtn) openBtn.addEventListener('click', openMobileSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileSidebar);
+    if (backdrop) backdrop.addEventListener('click', closeMobileSidebar);
+</script>
 </body>
 </html>
