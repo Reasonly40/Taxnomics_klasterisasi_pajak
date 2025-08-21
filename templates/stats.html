@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}Statistik Data - TaxNomics{% endblock %}
+
 {% block head_extra %}
 <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
 <style>
@@ -11,15 +12,15 @@
     }
     
     table.stats-table th, table.stats-table td {
-        border: 1px solid #d1d5db; /* garis pembatas */
+        border: 1px solid hsl(var(--b2)); /* Warna border dari tema */
         padding: 10px 15px;
-        text-align: center; /* rata tengah semua isi */
+        text-align: center;
     }
     
     table.stats-table th:first-child,
     table.stats-table td:first-child {
-        text-align: left; /* kolom pertama tetap rata kiri */
-        background-color: #f3f4f6;
+        text-align: left;
+        background-color: hsl(var(--b2)); /* Warna background dasar tema */
         font-weight: 600;
         position: sticky;
         left: 0;
@@ -27,114 +28,113 @@
     }
     
     table.stats-table th {
-        background-color: #e0e7ff;
+        background-color: hsl(var(--b3)); /* Warna background header tema yang lebih gelap */
         font-weight: 700;
     }
     
     table.stats-table tr:nth-child(even) {
-        background-color: #f9fafb;
+        /* Efek zebra striping menggunakan warna dasar tema */
+        background-color: hsl(var(--b1));
     }
-</style>    
+    table.stats-table tr:nth-child(odd) {
+        background-color: hsl(var(--b2)); 
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-<div class="bg-gray-50 py-6">
-    <div class="max-w-7xl mx-auto px-4 space-y-10">
+<div class="space-y-6">
 
-        <!-- Judul -->
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h1 class="text-3xl font-bold text-blue-700 mb-2"> Statistik Data</h1>
-            <p class="text-gray-600">Visualisasi data dari hasil pengolahan dan clustering.</p>
+    <div class="card bg-base-100 shadow-lg">
+        <div class="card-body">
+            <h1 class="card-title text-3xl text-primary">Statistik Data Clustering</h1>
+            <p class="text-base-content/70">Visualisasi data dari hasil pengolahan dan clustering file yang dipilih.</p>
         </div>
+    </div>
 
-        <!-- Kontrol -->
-        <div class="bg-white p-5 rounded-lg shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div class="card bg-base-100 shadow-lg">
+        <div class="card-body flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div class="flex items-center gap-3 flex-wrap">
-                <label for="fileSelect" class="text-sm font-semibold text-gray-700">Pilih File:</label>
-                <select id="fileSelect" class="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <label for="fileSelect" class="font-semibold text-base-content">Pilih File:</label>
+                <select id="fileSelect" class="select select-bordered select-sm">
                     {% for f in files %}
                     <option value="{{ f }}" {% if f == latest_filename %}selected{% endif %}>{{ f }}</option>
                     {% endfor %}
                 </select>
-                <span id="fileInfo" class="muted text-sm ml-3"></span>
+                <span id="fileInfo" class="text-base-content/60 text-sm ml-3"></span>
 
                 {% if session['role'] == 'admin' %}
-                <button 
-                    id="deleteFileBtn"
-                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 hidden">
-                    Hapus File
-                </button>
+                <button id="deleteFileBtn" class="btn btn-error btn-sm hidden">Hapus File</button>
                 {% endif %}
             </div>
             <div class="flex gap-3">
-                <button id="downloadStatsBtn" class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded shadow transition duration-150">
-                     Download Statistik CSV
-                </button>
-                <button id="viewClusteringBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded shadow transition duration-150">
-                     Lihat Hasil Prediksi
-                </button>
+                <button id="downloadStatsBtn" class="btn btn-success">Download Statistik CSV</button>
+                <button id="viewClusteringBtn" class="btn btn-primary">Lihat Hasil Clustering</button>
             </div>
         </div>
+    </div>
 
-        <!-- Loading Indicator -->
-        <div id="loadingIndicator" class="text-center text-gray-500 hidden">
-            ⏳ Memuat data statistik...
-        </div>
+    <div id="loadingIndicator" class="text-center text-base-content/70 hidden p-4">
+        <span class="loading loading-dots loading-lg"></span>
+        <p>Memuat data statistik...</p>
+    </div>
 
-        <!-- Ringkasan Statistik -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3 max-w-5xl w-full min-h-[500px]">
-            <h2 class="text-xl font-semibold border-b pb-2"> Ringkasan Statistik Numerik</h2>
-            <div id="summary" style="min-height:300px;">Pilih file untuk menampilkan ringkasan.</div>
-        </section>
-
-        <!-- Histogram -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3">
-            <h2 class="text-xl font-semibold border-b pb-2"> Distribusi Data Numerik (Histogram)</h2>
-            <div id="numeric-histograms" style="min-height:550px;">Pilih file untuk menampilkan visualisasi.</div>
-        </section>
-
-        <!-- Boxplot -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3">
-            <h2 class="text-xl font-semibold border-b pb-2"> Boxplot Data Numerik</h2>
-            <div id="numeric-boxplots" style="min-height:550px;">Pilih file untuk menampilkan visualisasi.</div>
-        </section>
-
-        <!-- Pie Chart Kategori -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3">
-            <h2 class="text-xl font-semibold border-b pb-2"> Distribusi Kategori (Pie Chart)</h2>
-            <div id="categorical-charts" style="min-height:700px;">Pilih file untuk menampilkan visualisasi.</div>
-        </section>
-
-        <!-- Jumlah Cluster per Kota -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3">
-            <h2 class="text-xl font-semibold border-b pb-2"> Jumlah Cluster per Kota/Kabupaten</h2>
-            <div id="cluster-counts" style="min-height:600px;">Pilih file untuk menampilkan visualisasi.</div>
-        </section>
-
-        <!-- Barplot -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3">
-            <h2 class="text-xl font-semibold flex items-center gap-2">
-                 <span>Barplot Jumlah Data Cluster di setiap Kota/Kabupaten</span>
-            </h2>
-            <div id="barplot-cluster-kota" style="min-height:650px;"></div>
-        </section>
-
-        <!-- Pie Komposisi Cluster -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3">
-            <h2 class="text-xl font-semibold flex items-center gap-2">
-                 <span>Komposisi Jumlah Data Berdasarkan Cluster</span>
-            </h2>
-            <div class="flex justify-center items-center">
-                <div id="pie-cluster-composition" style="height:750px; width:750px;"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <section class="card bg-base-100 shadow-lg lg:col-span-2">
+            <div class="card-body">
+                <h2 class="card-title border-b border-base-300 pb-2">Ringkasan Statistik Numerik</h2>
+                <div id="summary" class="min-h-[300px] prose max-w-none">Pilih file untuk menampilkan ringkasan.</div>
             </div>
-        </section>        
-
-        <!-- PCA Scatter -->
-        <section class="bg-white p-6 rounded-lg shadow space-y-3 hidden">
-            <h2 class="text-xl font-semibold border-b pb-2"> Visualisasi 2D (PCA)</h2>
-            <div id="tsne-scatter" style="min-height:550px;">Pilih file untuk menampilkan visualisasi.</div>
         </section>
 
+        <section class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+                <h2 class="card-title border-b border-base-300 pb-2">Distribusi Data (Histogram)</h2>
+                <div id="numeric-histograms" class="min-h-[550px]">Pilih file untuk menampilkan visualisasi.</div>
+            </div>
+        </section>
+
+        <section class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+                <h2 class="card-title border-b border-base-300 pb-2">Boxplot Data Numerik</h2>
+                <div id="numeric-boxplots" class="min-h-[550px]">Pilih file untuk menampilkan visualisasi.</div>
+            </div>
+        </section>
+
+        <section class="card bg-base-100 shadow-lg lg:col-span-2">
+            <div class="card-body">
+                <h2 class="card-title border-b border-base-300 pb-2">Distribusi Kategori (Pie Chart)</h2>
+                <div id="categorical-charts" class="min-h-[700px]">Pilih file untuk menampilkan visualisasi.</div>
+            </div>
+        </section>
+
+        <section class="card bg-base-100 shadow-lg lg:col-span-2">
+            <div class="card-body">
+                <h2 class="card-title border-b border-base-300 pb-2">Jumlah Cluster per Kota/Kabupaten</h2>
+                <div id="cluster-counts" class="min-h-[600px]">Pilih file untuk menampilkan visualisasi.</div>
+            </div>
+        </section>
+        
+        <section class="card bg-base-100 shadow-lg lg:col-span-2">
+            <div class="card-body">
+                <h2 class="card-title">Barplot Jumlah Data Cluster di setiap Kota/Kabupaten</h2>
+                <div id="barplot-cluster-kota" class="min-h-[650px]"></div>
+            </div>
+        </section>
+        
+        <section class="card bg-base-100 shadow-lg lg:col-span-2">
+            <div class="card-body items-center text-center">
+                <h2 class="card-title">Komposisi Jumlah Data Berdasarkan Cluster</h2>
+                <div id="pie-cluster-composition" class="h-[750px] w-full max-w-[750px]"></div>
+            </div>
+        </section>
+
+        <section class="card bg-base-100 shadow-lg hidden lg:col-span-2">
+            <div class="card-body">
+                <h2 class="card-title border-b border-base-300 pb-2">Visualisasi 2D (PCA)</h2>
+                <div id="tsne-scatter" class="min-h-[550px]">Pilih file untuk menampilkan visualisasi.</div>
+            </div>
+        </section>
     </div>
 </div>
 

@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="winter">
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}TaxNomics{% endblock %}</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      // Konfigurasi ini sudah benar untuk memastikan tulisan dan latar belakang memiliki kontras yang baik.
+      tailwind.config = {
+        daisyui: {
+          themes: ["winter", "night"], 
+        },
+      }
+    </script>
+
     {% block head_extra %}{% endblock %}
     <style>
         /* Smooth sidebar transition */
@@ -28,97 +40,80 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex">
+<body class="bg-base-200">
 
-    <!-- Sidebar -->
-    <aside id="sidebar" class="fixed z-30 left-0 top-0 w-64 h-full bg-blue-800 text-white flex flex-col shadow-lg">
-        <div class="p-4 border-b border-blue-700 flex items-center justify-between">
-            <!-- Logo + Nama -->
-            <div class="flex items-center space-x-3">
+    <aside id="sidebar" class="fixed z-30 left-0 top-0 w-64 h-full bg-gradient-to-b from-primary to-primary-focus text-base-content flex flex-col shadow-xl">
+        <div class="p-4 border-b border-primary-focus/50 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-3 group">
                 <img src="{{ url_for('static', filename='image/logo_app_untitle.png') }}" 
                      alt="Logo" 
-                     class="w-20 h-20 object-contain">
+                     class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300">
                 <div>
                     <div class="text-2xl font-bold leading-tight">TaxNomics</div>
                 </div>
-            </div>
+            </a>
         
-            <!-- Tombol tutup -->
-            <button id="closeSidebarBtn" class="md:hidden text-white focus:outline-none" title="Tutup Sidebar">
-                &times;
+            <button id="closeSidebarBtn" class="md:hidden btn btn-sm btn-circle btn-ghost" title="Tutup Sidebar">
+                ✕
             </button>
-        </div>        
+        </div> 
         
-        <!-- Menu Navigasi -->
-        <nav class="flex-1 p-4 space-y-2 overflow-auto">
-            <a href="{{ url_for('predict') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='predict' %}bg-blue-900{% endif %}">Clustering</a>
-            <a href="{{ url_for('upload') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='upload' %}bg-blue-900{% endif %}">Upload Data</a>
-            <a href="{{ url_for('stats_page') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='stats_page' %}bg-blue-900{% endif %}">Hasil Clustering</a>
-            <a href="{{ url_for('info_cluster') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='info_cluster' %}bg-blue-900{% endif %}">Informasi Clustering</a>
-            <a href="{{ url_for('sarima_predict') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='sarima_predict' %}bg-blue-900{% endif %}">Prediksi PDRB</a>
-            <a href="{{ url_for('map_page') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='map_page' %}bg-blue-900{% endif %}">Peta Interaktif</a>
-            
-            {% if session.get('role') == 'admin' %}
-            <a href="{{ url_for('manage_users') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='manage_users' %}bg-blue-900{% endif %}">
-                Manajemen Akun
-            </a>
-            <a href="{{ url_for('login_history') }}" class="block px-3 py-2 rounded hover:bg-blue-700 {% if request.endpoint=='login_history' %}bg-blue-900{% endif %}">
-                History Login
-            </a>
-            {% endif %}
+        <nav class="flex-1 p-4 overflow-auto">
+            <ul class="menu space-y-2">
+                <li><a href="{{ url_for('predict') }}" class="{% if request.endpoint=='predict' %}active{% endif %} text-base">Clustering</a></li>
+                <li><a href="{{ url_for('upload') }}" class="{% if request.endpoint=='upload' %}active{% endif %} text-base">Upload Data</a></li>
+                <li><a href="{{ url_for('stats_page') }}" class="{% if request.endpoint=='stats_page' %}active{% endif %} text-base">Hasil Clustering</a></li>
+                <li><a href="{{ url_for('info_cluster') }}" class="{% if request.endpoint=='info_cluster' %}active{% endif %} text-base">Informasi Clustering</a></li>
+                <li><a href="{{ url_for('sarima_predict') }}" class="{% if request.endpoint=='sarima_predict' %}active{% endif %} text-base">Prediksi PDRB</a></li>
+                <li><a href="{{ url_for('map_page') }}" class="{% if request.endpoint=='map_page' %}active{% endif %} text-base">Peta Interaktif</a></li>
+                
+                {% if session.get('role') == 'admin' %}
+                <div class="divider text-base-content/50 before:bg-base-content/20 after:bg-base-content/20">Admin</div>
+                <li><a href="{{ url_for('manage_users') }}" class="{% if request.endpoint=='manage_users' %}active{% endif %} text-base">Manajemen Akun</a></li>
+                <li><a href="{{ url_for('login_history') }}" class="{% if request.endpoint=='login_history' %}active{% endif %} text-base">History Login</a></li>
+                {% endif %}
+            </ul>
         </nav>
 
-        <!-- Tombol Logout -->
-        <div class="p-4 border-t border-blue-700">
-            <a href="{{ url_for('logout') }}" class="block bg-red-600 text-white px-3 py-2 rounded hover:bg-red-700 w-24 text-center mx-auto">Logout</a>
+        <div class="p-4 border-t border-primary-focus/50">
+            <a href="{{ url_for('logout') }}" class="btn btn-error w-full shadow-lg">Logout</a>
         </div>
     </aside>
 
-    <!-- Main content wrapper -->
     <div id="mainContent" class="flex-1 flex flex-col min-h-screen md:pl-64">
 
-        <!-- Header -->
-        <header class="bg-white shadow p-4 flex items-center justify-between">
-            <button id="openSidebarBtn" class="md:hidden text-gray-700 focus:outline-none" title="Buka Sidebar">
-                &#9776;
-            </button>
-            <div class="text-lg font-semibold text-gray-700">
-                {% set hour = now.hour %}
-                {% if 4 <= hour < 10 %}
-                    Selamat pagi
-                {% elif 10 <= hour < 15 %}
-                    Selamat siang
-                {% elif 15 <= hour < 18 %}
-                    Selamat sore
-                {% else %}
-                    Selamat malam
-                {% endif %}
-                {% if current_user.is_authenticated %}
-                    <span class="capitalize"> {{ current_user.nama_lengkap }}</span>!
-                {% else %}
-                    !
-                {% endif %}
-            </div>            
+        <header class="bg-base-100 shadow-md p-4 flex items-center justify-between sticky top-0 z-20 border-b border-base-300">
+            <div class="flex items-center gap-2">
+                <button id="openSidebarBtn" class="md:hidden btn btn-sm btn-ghost" title="Buka Sidebar">
+                    ☰
+                </button>
+                <div class="text-lg font-semibold text-base-content">
+                    {% set hour = now.hour %}
+                    {% if 4 <= hour < 10 %}
+                        Selamat pagi,
+                    {% elif 10 <= hour < 15 %}
+                        Selamat siang,
+                    {% elif 15 <= hour < 18 %}
+                        Selamat sore,
+                    {% else %}
+                        Selamat malam,
+                    {% endif %}
+                    {% if current_user.is_authenticated %}
+                        <span class="font-bold text-primary capitalize">{{ current_user.nama_lengkap }}</span>!
+                    {% else %}
+                        !
+                    {% endif %}
+                </div>
+            </div>
+            
+            <label class="swap swap-rotate btn btn-ghost btn-circle">
+                <input type="checkbox" class="theme-controller" value="night" />
+                <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17l-1.41 1.41L4.23 15.59 5.64 17zm-1.41-10L5.64 7 4.23 5.59 2.82 7zM12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1zm7.78 4.22a1 1 0 01.01 1.4l-1.4 1.4a1 1 0 01-1.42-1.41l1.4-1.4a1 1 0 011.41 0zM12 18a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zm5.59-2.83a1 1 0 011.41 1.41l-1.41 1.4a1 1 0 01-1.41-1.41l1.41-1.4zM4.22 19.78a1 1 0 010-1.41l1.4-1.4a1 1 0 111.42 1.41l-1.4 1.4a1 1 0 01-1.41 0zM22 12a1 1 0 01-1 1h-2a1 1 0 010-2h2a1 1 0 011 1zM3 12a1 1 0 01-1 1H0a1 1 0 010-2h2a1 1 0 011 1zm9-7a5 5 0 00-5 5a1 1 0 11-2 0a7 7 0 017-7a1 1 0 110 2z"/></svg>
+                <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64 13.14a1 1 0 00-1.05-.14l-2.09.73A1 1 0 0117 12.86a1 1 0 01.38-1.45l2.09-.73a1 1 0 00.14-1.05a9 9 0 00-11.41-1.55a1 1 0 00-.39 1.45l-2.09.73a1 1 0 01-1.3-1.3l2.09-.73A1 1 0 004.36 3.64a9 9 0 00-1.55 11.41a1 1 0 001.05.14l2.09-.73a1 1 0 011.3 1.3l-2.09.73a1 1 0 00-.14 1.05a9 9 0 0011.41 1.55a1 1 0 00.39-1.45l2.09-.73a1 1 0 011.3 1.3l-2.09.73a1 1 0 00.14 1.05a9 9 0 005.18-7.39a1 1 0 00-.14-1.05l-2.09-.73a1 1 0 01-1.3-1.3l2.09-.73a1 1 0 00.14-1.05z"/></svg>
+            </label>
         </header>
 
-        <!-- Flash messages + Content -->
-        <main class="flex-grow p-6 bg-gray-100">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <div class="mb-4 space-y-2">
-                        {% for category, message in messages %}
-                            <div class="p-3 rounded text-white 
-                                {% if category == 'error' %}bg-red-600
-                                {% elif category == 'success' %}bg-green-600
-                                {% else %}bg-blue-600
-                                {% endif %}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
-            
+        <main class="flex-grow p-6 bg-base-100">
             {% block content %}{% endblock %}
         </main>
 
@@ -131,14 +126,11 @@
         const closeBtn = document.getElementById('closeSidebarBtn');
 
         function updateLayout() {
-            if(window.innerWidth >= 768) {
-                if(sidebar.classList.contains('closed')) {
-                    mainContent.style.paddingLeft = '0';
-                } else {
-                    mainContent.style.paddingLeft = '16rem';
-                }
+            if(window.innerWidth >= 768) { // Desktop
+                mainContent.style.paddingLeft = '16rem'; // 16rem = w-64
+                sidebar.classList.remove('closed'); // Pastikan sidebar selalu terbuka di desktop
                 sidebar.style.transform = 'translateX(0)';
-            } else {
+            } else { // Mobile
                 mainContent.style.paddingLeft = '0';
                 if(sidebar.classList.contains('closed')) {
                     sidebar.style.transform = 'translateX(-100%)';
@@ -166,8 +158,9 @@
             }
             updateLayout();
         }
+        
         window.addEventListener('resize', init);
-        window.addEventListener('load', init);
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>

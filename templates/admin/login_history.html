@@ -1,57 +1,72 @@
 {% extends "layout.html" %}
 
-{% block title %}History Login User{% endblock %}
+{% block title %}History Login User - TaxNomics{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-4">History Login User</h1>
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h1 class="card-title text-2xl text-primary">History Login User</h1>
 
-<!-- Form filter tanggal -->
-<form method="get" class="flex items-center gap-2 mb-4">
-    <label>Start Date:</label>
-    <input type="date" name="start_date" value="{{ start_date }}" class="border rounded px-2 py-1">
-    <label>End Date:</label>
-    <input type="date" name="end_date" value="{{ end_date }}" class="border rounded px-2 py-1">
-    <button type="submit" class="bg-blue-600 text-white px-3 py-1 rounded">Filter</button>
-</form>
+        <form method="get" class="card-actions items-center gap-4 p-4 bg-base-200 rounded-lg">
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Tanggal Mulai</span>
+                </label>
+                <input type="date" name="start_date" value="{{ start_date }}" class="input input-bordered input-sm">
+            </div>
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Tanggal Akhir</span>
+                </label>
+                <input type="date" name="end_date" value="{{ end_date }}" class="input input-bordered input-sm">
+            </div>
+            <div class="pt-6">
+                <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+            </div>
+        </form>
 
-<!-- Tabel history login -->
-<div class="overflow-x-auto">
-<table class="min-w-full border border-gray-300">
-    <thead class="bg-gray-100">
-        <tr>
-            <th class="border px-3 py-2 text-left">User</th>
-            <th class="border px-3 py-2 text-left">IP Address</th>
-            <th class="border px-3 py-2 text-left">Login Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for log in logs.items %}
-        <tr>
-            <td class="border px-3 py-2">{{ log.username }}</td>
-            <td class="border px-3 py-2">{{ log.ip_address }}</td>
-            <td class="border px-3 py-2">{{ log.login_time_str }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3" class="border px-3 py-2 text-center text-gray-500">Tidak ada data</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-</div>
+        <div class="overflow-x-auto mt-4">
+            <table class="table table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>IP Address</th>
+                        <th>Waktu Login</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs.items %}
+                    <tr class="hover">
+                        <td>{{ log.username }}</td>
+                        <td>{{ log.ip_address }}</td>
+                        <td>{{ log.login_time_str }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center text-base-content/60 py-4">Tidak ada data untuk rentang tanggal yang dipilih.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-<!-- Pagination -->
-<div class="flex justify-center mt-4 gap-2">
-    {% if logs.has_prev %}
-    <a href="?page={{ logs.prev_num }}&start_date={{ start_date }}&end_date={{ end_date }}" class="px-3 py-1 border rounded bg-gray-200">Prev</a>
-    {% endif %}
-
-    <span class="px-3 py-1 border rounded bg-white">
-        Halaman {{ logs.page }} dari {{ logs.pages }}
-    </span>
-
-    {% if logs.has_next %}
-    <a href="?page={{ logs.next_num }}&start_date={{ start_date }}&end_date={{ end_date }}" class="px-3 py-1 border rounded bg-gray-200">Next</a>
-    {% endif %}
+        <div class="card-actions justify-center mt-6">
+            <div class="join">
+                {% if logs.has_prev %}
+                <a href="?page={{ logs.prev_num }}&start_date={{ start_date }}&end_date={{ end_date }}" class="join-item btn">«</a>
+                {% else %}
+                <button class="join-item btn btn-disabled">«</button>
+                {% endif %}
+                
+                <button class="join-item btn">Halaman {{ logs.page }} dari {{ logs.pages }}</button>
+                
+                {% if logs.has_next %}
+                <a href="?page={{ logs.next_num }}&start_date={{ start_date }}&end_date={{ end_date }}" class="join-item btn">»</a>
+                {% else %}
+                <button class="join-item btn btn-disabled">»</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

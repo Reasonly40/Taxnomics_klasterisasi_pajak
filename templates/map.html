@@ -1,59 +1,66 @@
 {% extends "layout.html" %}
 {% block title %}Peta Interaktif - TaxNomics{% endblock %}
+
 {% block head_extra %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-#map { height: 80vh; }
-.legend {
-    background: white;
-    padding: 10px;
-    line-height: 1.4em;
-    font-size: 14px;
-    border-radius: 8px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.2);
-}
-.legend h4 {
-    margin: 0 0 6px 0;
-    font-size: 15px;
-    font-weight: bold;
-}
-.cluster-filter {
-    position: absolute;
-    top: 10px;
-    left: 50px;
-    z-index: 1000;
-    background: white;
-    padding: 6px;
-    border-radius: 6px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.3);
-    font-size: 14px;
-}
+    #map { 
+        height: 80vh; 
+        /* Menggunakan warna dasar tema untuk background saat loading */
+        background-color: hsl(var(--b2));
+    }
+    .legend {
+        /* Menggunakan warna dasar konten tema (seperti putih di tema terang) */
+        background: hsl(var(--b1)); 
+        color: hsl(var(--bc)); /* Warna teks dasar */
+        padding: 10px;
+        line-height: 1.4em;
+        font-size: 14px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+    .legend h4 {
+        margin: 0 0 6px 0;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    /* Style ini tidak terpakai di HTML Anda, tapi saya sesuaikan juga untuk konsistensi */
+    .cluster-filter {
+        position: absolute;
+        top: 10px;
+        left: 50px;
+        z-index: 1000;
+        background: hsl(var(--b1));
+        padding: 6px;
+        border-radius: 6px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.3);
+        font-size: 14px;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-4">Peta Interaktif Cluster Pajak</h1>
+<h1 class="text-2xl font-bold mb-4 text-primary">Peta Interaktif Cluster Pajak</h1>
 
-<div class="flex items-center space-x-3 bg-white p-3 rounded-lg shadow-md w-fit mb-4">
-  <label for="clusterSelect" class="text-gray-700 font-medium">Filter Cluster:</label>
-  <select id="clusterSelect" 
-          class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-      <option value="all">Semua</option>
-      <option value="0">Cluster 0</option>
-      <option value="1">Cluster 1</option>
-      <option value="2">Cluster 2</option>
-      <option value="3">Cluster 3</option>
-      <option value="4">Cluster 4</option>
-      <option value="5">Cluster 5</option>
-      <option value="6">Cluster 6</option>
-      <option value="7">Cluster 7</option>
-      <option value="8">Cluster 8</option>
-      <option value="9">Cluster 9</option>
-  </select>
+<div class="flex items-center space-x-3 bg-base-100 p-3 rounded-lg shadow-md w-fit mb-4">
+    <label for="clusterSelect" class="text-base-content font-medium">Filter Cluster:</label>
+    <select id="clusterSelect" class="select select-bordered select-sm">
+        <option value="all">Semua</option>
+        <option value="0">Cluster 0</option>
+        <option value="1">Cluster 1</option>
+        <option value="2">Cluster 2</option>
+        <option value="3">Cluster 3</option>
+        <option value="4">Cluster 4</option>
+        <option value="5">Cluster 5</option>
+        <option value="6">Cluster 6</option>
+        <option value="7">Cluster 7</option>
+        <option value="8">Cluster 8</option>
+        <option value="9">Cluster 9</option>
+    </select>
 </div>
 
-<div id="map" class="rounded-lg shadow-md border border-gray-200"></div>
+<div id="map" class="rounded-lg shadow-md border border-base-300"></div>
 
 <script>
 const filename = "{{ latest_filename }}";

@@ -75,6 +75,12 @@ login_manager.login_view = "login"
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@app.route("/")
+@login_required
+def home():
+    return redirect(url_for("predict"))
+
+
 # -------------------------
 # Auth routes
 # -------------------------
@@ -156,6 +162,11 @@ def logout():
 # -------------------------
 # Clustering routes
 # -------------------------
+@app.route("/")
+def index():
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+    return redirect(url_for("predict"))
 
 @app.route("/clustering", methods=["GET", "POST"])
 @login_required
@@ -215,7 +226,11 @@ def info_cluster():
 
 @app.context_processor
 def inject_now():
-    return {'now': datetime.now()} 
+    """
+    Membuat variabel 'now' yang berisi waktu saat ini tersedia
+    secara global di semua template Jinja2.
+    """
+    return {'now': datetime.now()}
 
 # -------------------------
 # Izin khusus untuk admin
@@ -911,10 +926,6 @@ print(app.url_map)
 # -------------------------
 # Run
 # -------------------------
-
-@app.route("/")
-def home():
-    return render_template("clustering.html")
 
 if __name__ == "__main__":
     # Buat database jika belum ada

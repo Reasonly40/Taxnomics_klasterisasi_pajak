@@ -1,115 +1,149 @@
 {% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>{% block title %}Informasi Clustering - TaxNomics{% endblock %}</title>
-    
-    <link rel="icon" href="logo_app_untitle.png" type="image/png">
-</head>
+{% block title %}Informasi Clustering - TaxNomics{% endblock %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto p-6 space-y-6">
-    <h1 class="text-3xl font-bold text-blue-700 mb-6">Informasi Lengkap Klaster Pajak</h1>
-        <section class="bg-white p-6 rounded-lg shadow space-y-6">
-            <h2 class="text-2xl font-bold border-b pb-2 mb-4">📌 Informasi Komprehensif: Persona dan Profil Klaster</h2>
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h1 class="card-title text-3xl text-primary mb-4">Informasi Lengkap Klaster Pajak</h1>
+        
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold border-b border-base-300 pb-2">📌 Profil dan Karakteristik Setiap Klaster</h2>
 
-            <div class="space-y-4 overflow-y-auto max-h-[700px]">
-                <!-- Klaster 0 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 0 – Korporasi Raksasa dan Pemilik Aset Besar</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 283,1 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 1.749,3 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPN Dalam Negeri, PPh Pasal 25/29 Badan, PBB, BPHTB</p>
-                    <p><strong>Karakteristik:</strong> Klaster ini terdiri dari entitas dengan kontribusi fiskal tertinggi, meliputi perusahaan besar dan pemilik aset bernilai sangat tinggi. Pajak yang dominan meliputi PPN Dalam Negeri, PPh Pasal 25/29 Badan, PBB, dan BPHTB. Meskipun hanya mencakup sebagian kecil data, nilai transaksinya sangat besar sehingga menjadi fondasi penerimaan negara. Distribusinya merata di berbagai wilayah, mencerminkan persebaran kapital besar secara nasional.</p>
+            <div class="space-y-2">
+
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" checked="checked" /> 
+                    <div class="collapse-title text-xl font-semibold">
+                        Klaster 0 – Korporasi Raksasa & Pemilik Aset Besar
+                    </div>
+                    <div class="collapse-content"> 
+                        <div class="prose max-w-none text-base-content/80">
+                            <ul>
+                                <li><strong>Rata-rata Pajak:</strong> ± 283,1 M</li>
+                                <li><strong>Rentang Nilai:</strong> 0 – 1.749,3 M</li>
+                                <li><strong>Jenis Pajak Dominan:</strong> PPN Dalam Negeri, PPh Pasal 25/29 Badan, PBB, BPHTB</li>
+                            </ul>
+                            <p><strong>Karakteristik:</strong> Klaster ini terdiri dari entitas dengan kontribusi fiskal tertinggi, meliputi perusahaan besar dan pemilik aset bernilai sangat tinggi. Meskipun hanya mencakup sebagian kecil data, nilai transaksinya sangat besar sehingga menjadi fondasi penerimaan negara.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Klaster 1 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 1 – Penggerak Ekonomi UKM, Individu & Transaksi Lintas Batas</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 7,8 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 102,4 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPh 22 Impor, PPh 25/29 OP, PPN Impor, PPh DTP, Pajak Lainnya</p>
-                    <p><strong>Karakteristik:</strong> klaster ini adalah transaksi bernilai kecil hingga menengah dari sektor UMKM, perdagangan perorangan, serta aktivitas impor skala kecil. Pajak dominan seperti PPh 22 Impor, PPh 25/29 Orang Pribadi, dan PPN Impor menunjukkan dinamika ekonomi berbasis masyarakat. Volume data tinggi, namun nominal per transaksi relatif rendah, mencerminkan aktivitas ekonomi sehari-hari masyarakat.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">
+                        Klaster 1 – Penggerak Ekonomi UKM & Individu
+                    </div>
+                    <div class="collapse-content"> 
+                        <div class="prose max-w-none text-base-content/80">
+                            <ul>
+                                <li><strong>Rata-rata Pajak:</strong> ± 7,8 M</li>
+                                <li><strong>Rentang Nilai:</strong> 0 – 102,4 M</li>
+                                <li><strong>Jenis Pajak Dominan:</strong> PPh 22 Impor, PPh 25/29 OP, PPN Impor, PPh DTP, Pajak Lainnya</li>
+                            </ul>
+                            <p><strong>Karakteristik:</strong> Klaster ini adalah transaksi bernilai kecil hingga menengah dari sektor UMKM, perdagangan perorangan, serta aktivitas impor skala kecil. Volume data tinggi, namun nominal per transaksi relatif rendah, mencerminkan aktivitas ekonomi sehari-hari masyarakat.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Klaster 2 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 2 – Spesialis Transaksi Bernilai Tinggi (PPh Final)</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 110,5 M</p>
-                    <p><strong>Rentang Nilai:</strong> 4,7 – 589,3 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPh Final</p>
-                    <p><strong>Karakteristik:</strong> Klaster ini menampung transaksi bernilai besar seperti proyek konstruksi, pengalihan aset, atau sewa yang dikenai PPh Final. Transaksi di klaster ini cenderung homogen dan jarang terjadi, namun kontribusinya signifikan terhadap penerimaan pajak karena nilai transaksinya tinggi.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">
+                        Klaster 2 – Spesialis Transaksi Bernilai Tinggi (PPh Final)
+                    </div>
+                    <div class="collapse-content"> 
+                        <div class="prose max-w-none text-base-content/80">
+                            <ul>
+                                <li><strong>Rata-rata Pajak:</strong> ± 110,5 M</li>
+                                <li><strong>Rentang Nilai:</strong> 4,7 – 589,3 M</li>
+                                <li><strong>Jenis Pajak Dominan:</strong> PPh Final</li>
+                            </ul>
+                            <p><strong>Karakteristik:</strong> Klaster ini menampung transaksi bernilai besar seperti proyek konstruksi, pengalihan aset, atau sewa yang dikenai PPh Final. Transaksi di klaster ini cenderung homogen dan jarang terjadi, namun kontribusinya signifikan.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">
+                        Klaster 3 – Korporasi Operasional dan Pemilik Aset
+                    </div>
+                    <div class="collapse-content"> 
+                        <div class="prose max-w-none text-base-content/80">
+                            <ul>
+                                <li><strong>Rata-rata Pajak:</strong> ± 96,1 M</li>
+                                <li><strong>Rentang Nilai:</strong> 0 – 677,1 M</li>
+                                <li><strong>Jenis Pajak Dominan:</strong> PPh Pasal 22, 23, 25/29 Badan, PBB, BPHTB</li>
+                            </ul>
+                            <p><strong>Karakteristik:</strong> Terdiri dari perusahaan menengah hingga besar yang aktif dalam kegiatan bisnis sehari-hari dan memiliki aset signifikan. Nilai transaksi tinggi berasal dari pembelian barang dan jasa dalam skala besar.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Klaster 3 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 3 – Korporasi Operasional dan Pemilik Aset</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 96,1 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 677,1 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPh Pasal 22, 23, 25/29 Badan, PBB, BPHTB</p>
-                    <p><strong>Karakteristik:</strong> Klaster ini terdiri dari perusahaan menengah hingga besar yang aktif dalam kegiatan bisnis sehari-hari dan memiliki aset signifikan. Pajak dominan: PPh Pasal 22, 23, 25/29 Badan, PBB, dan BPHTB. Nilai transaksi tinggi berasal dari pembelian barang dan jasa dalam skala besar, menjadikan klaster ini indikator stabilitas bisnis formal di wilayahnya.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">
+                        Klaster 4 – Transaksi Administratif dan Mikro
+                    </div>
+                    <div class="collapse-content"> 
+                        <div class="prose max-w-none text-base-content/80">
+                            <ul>
+                                <li><strong>Rata-rata Pajak:</strong> ± 0,1 M</li>
+                                <li><strong>Rentang Nilai:</strong> 0 – 1,1 M</li>
+                                <li><strong>Jenis Pajak Dominan:</strong> PPN Lainnya, PPnBM Lainnya, PPN Impor</li>
+                            </ul>
+                            <p><strong>Karakteristik:</strong> Menampilkan transaksi bernilai sangat rendah, biasanya bersifat administratif atau pelengkap. Relevan untuk memantau kepatuhan pajak dasar di masyarakat.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Klaster 4 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 4 – Transaksi Administratif dan Mikro</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 0,1 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 1,1 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPN Lainnya, PPnBM Lainnya, PPN Impor</p>
-                    <p><strong>Karakteristik:</strong> Klaster ini menampilkan transaksi bernilai sangat rendah, biasanya bersifat administratif atau pelengkap. Pajak yang dominan adalah PPN Lainnya, PPnBM Lainnya, dan PPN Impor. Kluster ini memiliki kontribusi finansialnya rendah, sehingga relevan untuk memantau kepatuhan pajak dasar di masyarakat.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">
+                        Klaster 5 – Spesialis Penggajian Skala Besar
+                    </div>
+                    <div class="collapse-content"> 
+                        <div class="prose max-w-none text-base-content/80">
+                            <ul>
+                                <li><strong>Rata-rata Pajak:</strong> ± 195,0 M</li>
+                                <li><strong>Rentang Nilai:</strong> 4,2 – 911,9 M</li>
+                                <li><strong>Jenis Pajak Dominan:</strong> PPh Pasal 21</li>
+                            </ul>
+                            <p><strong>Karakteristik:</strong> Fokus pada entitas dengan pengeluaran gaji besar (pemerintah, BUMN, perusahaan besar). Kontribusinya besar secara nominal karena frekuensi dan nilai pembayaran pajak atas gaji yang rutin.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">Klaster 6 – Ekonomi Jasa dan Komunitas</div>
+                    <div class="collapse-content"><div class="prose max-w-none text-base-content/80"><ul><li><strong>Rata-rata Pajak:</strong> ± 2,0 M</li><li><strong>Rentang Nilai:</strong> 0 – 21,4 M</li><li><strong>Jenis Pajak Dominan:</strong> PPh Pasal 23, PPh 25/29 OP</li></ul><p><strong>Karakteristik:</strong> Menunjukkan pelaku usaha jasa skala kecil-menengah dan aktivitas ekonomi komunitas lokal. Berpotensi menjadi ekonomi berbasis komunitas dan penting untuk pengembangan pajak lokal.</p></div></div>
                 </div>
 
-                <!-- Klaster 5 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 5 – Spesialis Penggajian Skala Besar</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 195,0 M</p>
-                    <p><strong>Rentang Nilai:</strong> 4,2 – 911,9 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPh Pasal 21</p>
-                    <p><strong>Karakteristik:</strong> Fokus utama kluster ini adalah entitas dengan pengeluaran gaji besar, mencakup banyak pegawai. Pajak dominan adalah PPh Pasal 21. Klaster ini mewakili lembaga formal seperti pemerintah, BUMN/BUMD, atau perusahaan besar. Kontribusinya besar secara nominal karena frekuensi dan nilai pembayaran pajak atas gaji yang rutin.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">Klaster 7 – Segmen Ekonomi Unik dan Spesifik</div>
+                    <div class="collapse-content"><div class="prose max-w-none text-base-content/80"><ul><li><strong>Rata-rata Pajak:</strong> ± 4,0 M</li><li><strong>Rentang Nilai:</strong> 0 – 22,1 M</li><li><strong>Jenis Pajak Dominan:</strong> Pajak campuran insidental</li></ul><p><strong>Karakteristik:</strong> Klaster residual berisi aktivitas ekonomi unik, lokal, dan tidak rutin. Penting untuk diidentifikasi sebagai potensi ekonomi unik yang mungkin layak diberi perhatian.</p></div></div>
                 </div>
 
-                <!-- Klaster 6 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 6 – Ekonomi Jasa dan Komunitas</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 2,0 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 21,4 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPh Pasal 23, PPh 25/29 OP</p>
-                    <p><strong>Karakteristik:</strong> Menunjukkan pelaku usaha jasa skala kecil-menengah dan aktivitas ekonomi komunitas lokal. Pajak dominan: PPh Pasal 23 dan PPh 25/29 Orang Pribadi. Walaupun nilai nominal relatif rendah, dapat berpotensi menjadi ekonomi berbasis komunitas dan penting untuk pengembangan pajak lokal.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">Klaster 8 – Industri Spesifik dan Transaksi Kompleks</div>
+                    <div class="collapse-content"><div class="prose max-w-none text-base-content/80"><ul><li><strong>Rata-rata Pajak:</strong> ± 18,9 M</li><li><strong>Rentang Nilai:</strong> 0 – 96,0 M</li><li><strong>Jenis Pajak Dominan:</strong> PPh Migas, PPh 23, PPh 26, pajak impor</li></ul><p><strong>Karakteristik:</strong> Mencakup sektor industri besar atau perdagangan internasional dengan kombinasi pajak kompleks, mencerminkan bisnis lintas negara dan sektor industri khusus.</p></div></div>
                 </div>
 
-                <!-- Klaster 7 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 7 – Segmen Ekonomi Unik dan Spesifik</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 4,0 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 22,1 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> Pajak campuran insidental dan tidak umum</p>
-                    <p><strong>Karakteristik:</strong> Klaster residual ini berisi aktivitas ekonomi unik, lokal, dan tidak rutin, misal pariwisata niche atau komoditas khusus. Pajak dominan campuran dan tidak konsisten. Nilai transaksi rendah, namun karakter khususnya penting untuk diidentifikasi sebagai potensi ekonomi unik yang mungkin layak diberi perhatian atau insentif.</p>
-                </div>
-
-                <!-- Klaster 8 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 8 – Industri Spesifik dan Transaksi Kompleks</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 18,9 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 96,0 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> PPh Migas, PPh 23, PPh 26, pajak impor lainnya</p>
-                    <p><strong>Karakteristik:</strong> Klaster ini mencakup sektor industri besar atau perdagangan internasional dengan kombinasi pajak kompleks seperti PPh Migas, PPh 23, PPh 26, dan PPN Impor. Volume transaksi menengah hingga tinggi dengan struktur pajak campuran, mencerminkan bisnis lintas negara dan sektor industri khusus.</p>
-                </div>
-
-                <!-- Klaster 9 -->
-                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">Klaster 9 – Segmen Ekonomi Sangat Spesifik (Residual)</h3>
-                    <p><strong>Rata-rata Pajak:</strong> ± 2,3 M</p>
-                    <p><strong>Rentang Nilai:</strong> 0 – 26,7 M</p>
-                    <p><strong>Jenis Pajak Dominan:</strong> Pajak insidental bervolume terendah</p>
-                    <p><strong>Karakteristik:</strong> Klaster ini menampilkan entitas ekonomi jarang terjadi atau tidak masuk kategori lain. Pola perpajakan insidental dan tidak standar, sering muncul dari aktivitas baru atau eksperimen ekonomi lokal. Meskipun kecil, penting dipantau sebagai potensi ekonomi lokal atau inkubator inovasi.</p>
+                <div class="collapse collapse-plus bg-base-200">
+                    <input type="radio" name="cluster-accordion" /> 
+                    <div class="collapse-title text-xl font-semibold">Klaster 9 – Segmen Ekonomi Sangat Spesifik (Residual)</div>
+                    <div class="collapse-content"><div class="prose max-w-none text-base-content/80"><ul><li><strong>Rata-rata Pajak:</strong> ± 2,3 M</li><li><strong>Rentang Nilai:</strong> 0 – 26,7 M</li><li><strong>Jenis Pajak Dominan:</strong> Pajak insidental bervolume terendah</li></ul><p><strong>Karakteristik:</strong> Menampilkan entitas ekonomi yang jarang terjadi atau tidak masuk kategori lain. Penting dipantau sebagai potensi ekonomi lokal atau inkubator inovasi.</p></div></div>
                 </div>
             </div>
 
-            <div class="mt-6 p-4 bg-gray-100 rounded-lg shadow-inner">
-                <p>Kesepuluh klaster memberikan pemahaman mendalam terhadap segmentasi perilaku fiskal, persona wajib pajak, dan struktur ekonomi regional. Informasi ini bisa digunakan untuk merancang kebijakan perpajakan berbasis data dan alokasi sumber daya lebih efektif.</p>
+            <div role="alert" class="alert mt-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>Kesepuluh klaster ini memberikan pemahaman mendalam untuk merancang kebijakan perpajakan berbasis data dan alokasi sumber daya yang lebih efektif.</span>
             </div>
         </section>
+    </div>
 </div>
 {% endblock %}

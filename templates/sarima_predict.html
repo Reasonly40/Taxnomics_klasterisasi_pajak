@@ -3,22 +3,41 @@
 {% block title %}Prediksi - TaxNomics{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-6">Prediksi Pertumbuhan Ekonomi</h1>
+<h1 class="text-2xl font-bold mb-6 text-primary">Prediksi Pertumbuhan Ekonomi (PDRB)</h1>
 
 {% if mse is not none and rmse is not none and mae is not none %}
-<div class="mb-6 text-lg space-y-1">
-  <p>Mean Squared Error (MSE): <strong>{{ mse }}</strong></p>
-  <p>Root Mean Squared Error (RMSE): <strong>{{ rmse }}</strong></p>
-  <p>Mean Absolute Error (MAE): <strong>{{ mae }}</strong></p>
+<div class="stats stats-vertical lg:stats-horizontal shadow mb-6 bg-base-100">
+  
+  <div class="stat">
+    <div class="stat-title">Mean Squared Error (MSE)</div>
+    <div class="stat-value text-secondary">{{ "%.4f"|format(mse) }}</div>
+    <div class="stat-desc">Semakin kecil semakin baik</div>
+  </div>
+  
+  <div class="stat">
+    <div class="stat-title">Root Mean Squared Error (RMSE)</div>
+    <div class="stat-value text-accent">{{ "%.4f"|format(rmse) }}</div>
+    <div class="stat-desc">Akar dari MSE</div>
+  </div>
+  
+  <div class="stat">
+    <div class="stat-title">Mean Absolute Error (MAE)</div>
+    <div class="stat-value">{{ "%.4f"|format(mae) }}</div>
+    <div class="stat-desc">Rata-rata selisih absolut</div>
+  </div>
+  
 </div>
 {% endif %}
 
 {% if plot_data %}
-<div class="overflow-auto max-w-full border border-gray-300 rounded shadow-lg">
-    <img src="data:image/png;base64,{{ plot_data }}" alt="SARIMA Forecast Plot" class="w-full h-auto object-contain" />
+<div class="bg-base-100 p-4 border border-base-300 rounded-lg shadow-xl">
+    <img src="data:image/png;base64,{{ plot_data }}" alt="SARIMA Forecast Plot" class="w-full h-auto object-contain rounded" />
 </div>
 {% else %}
-<p class="text-gray-500 italic">Data belum tersedia.</p>
+<div role="alert" class="alert alert-info">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+  <span>Data plot belum tersedia. Silakan jalankan proses prediksi untuk menampilkannya.</span>
+</div>
 {% endif %}
 
 {% endblock %}
